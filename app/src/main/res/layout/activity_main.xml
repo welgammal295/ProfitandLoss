@@ -7,12 +7,166 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/instructionDisplayTextView"
+        android:layout_width="380dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dip"
+        android:padding="8dp"
+        android:text="@string/instruction"
+        android:textColor="@color/blue"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/revenueLabelTextView"
+        android:layout_width="213dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:text="@string/revenue"
+        android:textColor="@color/light_orange"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instructionDisplayTextView" />
+
+    <EditText
+        android:id="@+id/revenueInputEditText"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:hint="@string/enter_monthly_revenue"
+        android:textSize="12sp"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:inputType="numberDecimal"
+        android:padding="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/revenueLabelTextView"
+        app:layout_constraintStart_toEndOf="@id/revenueLabelTextView"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/costOfSalesLabelTextView"
+        android:layout_width="213dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:text="@string/costofsales"
+        android:textColor="@color/light_orange"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/revenueLabelTextView" />
+
+    <EditText
+        android:id="@+id/costOfSalesInputEditText"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:hint="@string/enter_cost_of_sales"
+        android:textSize="12sp"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:inputType="numberDecimal"
+        android:padding="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/costOfSalesLabelTextView"
+        app:layout_constraintStart_toEndOf="@id/costOfSalesLabelTextView"
+        android:autofillHints="" />
+
+
+
+    <TextView
+        android:id="@+id/operatingExpensesLabelTextView"
+        android:layout_width="213dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:text="@string/operating_expenses"
+        android:textColor="@color/light_orange"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/costOfSalesLabelTextView" />
+
+    <EditText
+        android:id="@+id/operatingExpensesInputEditText"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:hint="@string/enter_operating_expenses"
+        android:textSize="12sp"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:inputType="numberDecimal"
+        android:padding="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/operatingExpensesLabelTextView"
+        app:layout_constraintStart_toEndOf="@id/operatingExpensesLabelTextView"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/otherExpensesLabelTextView"
+        android:layout_width="213dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:text="@string/other_expenses"
+        android:textColor="@color/light_orange"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/operatingExpensesLabelTextView" />
+
+    <EditText
+        android:id="@+id/otherExpensesInputEditText"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:hint="@string/enter_other_expenses"
+        android:textSize="12sp"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:inputType="numberDecimal"
+        android:padding="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/otherExpensesLabelTextView"
+        app:layout_constraintStart_toEndOf="@id/otherExpensesLabelTextView"
+        android:autofillHints="" />
+
+    <TextView
+        android:id="@+id/otherIncomesLabelTextView"
+        android:layout_width="213dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:text="@string/other_incomes"
+        android:textColor="@color/light_orange"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/otherExpensesLabelTextView" />
+
+    <EditText
+        android:id="@+id/otherIncomesInputEditText"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:hint="@string/enter_other_incomes"
+        android:textSize="12sp"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:inputType="numberDecimal"
+        android:padding="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/otherIncomesLabelTextView"
+        app:layout_constraintStart_toEndOf="@id/otherIncomesLabelTextView"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/netIncomeButton"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:shadowColor="@color/material_dynamic_secondary90"
+        android:text="@string/net_income"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:backgroundTint="@color/light_orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/otherIncomesLabelTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

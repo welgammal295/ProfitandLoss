@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">ProfitandLoss</string>
+    <string name="revenue">Revenue</string>
+    <string name="instruction">Enter your Monthly Information Below</string>
+    <string name="enter_monthly_revenue">Enter Monthly Revenue</string>
+    <string name="dollarSymbol">$</string>
+    <string name="costofsales">Cost of Sales</string>
+    <string name="enter_cost_of_sales">Enter Cost of Sales</string>
+    <string name="operating_expenses">Operating Expenses</string>
+    <string name="enter_operating_expenses">Enter Op Expenses</string>
+    <string name="other_expenses">Other Expenses</string>
+    <string name="enter_other_expenses">Enter Other Expenses</string>
+    <string name="other_incomes">Other Incomes</string>
+    <string name="enter_other_incomes">Enter Other Incomes</string>
+    <string name="net_income">Net Income</string>
 </resources>
