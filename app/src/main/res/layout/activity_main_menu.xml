@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/welcomeDisplayTextView"
+        android:layout_width="383dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dip"
+        android:padding="8dp"
+        android:gravity="center"
+        android:text="@string/welcome"
+        android:textColor="@color/blue"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Spinner
+        android:id="@+id/years"
+        android:layout_width="213dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="180dp"
+        android:gravity="center"
+        android:spinnerMode="dropdown"
+        android:padding="8dp"
+        android:textColor="@color/light_orange"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeDisplayTextView"
+        tools:layout_editor_absoluteX="83dp" />
+
+    <Button
+        android:id="@+id/mainMenuButton"
+        android:layout_width="180dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="@color/light_orange"
+        android:gravity="center"
+        android:shadowColor="@color/material_dynamic_secondary90"
+        android:text="@string/go"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@id/backgroundImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

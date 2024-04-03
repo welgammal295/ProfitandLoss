@@ -4,7 +4,7 @@
     <string name="instruction">Enter your Monthly Information Below</string>
     <string name="enter_monthly_revenue">Enter Monthly Revenue</string>
     <string name="dollarSymbol">$</string>
-    <string name="costofsales">Cost of Sales</string>
+    <string name="costfsales">Cost of Sales</string>
     <string name="enter_cost_of_sales">Enter Cost of Sales</string>
     <string name="operating_expenses">Operating Expenses</string>
     <string name="enter_operating_expenses">Enter Op Expenses</string>
@@ -14,5 +14,14 @@
     <string name="enter_other_incomes">Enter Other Incomes</string>
     <string name="net_income">Net Income</string>
     <string name="main_menu">Main Menu</string>
-    <string name="net_incomes">Net Income</string>
+    <string name="net_income_value">%1$.2f</string>
+    <string name="welcome">Welcome @users!</string>
+    <string name="go">Go!</string>
+    <string-array name="yearsList">
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+    </string-array>
 </resources>
