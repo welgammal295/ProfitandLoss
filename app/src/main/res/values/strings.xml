@@ -13,4 +13,6 @@
     <string name="other_incomes">Other Incomes</string>
     <string name="enter_other_incomes">Enter Other Incomes</string>
     <string name="net_income">Net Income</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="net_incomes">Net Income</string>
 </resources>
