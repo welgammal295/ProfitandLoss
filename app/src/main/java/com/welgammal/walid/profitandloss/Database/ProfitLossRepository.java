@@ -7,13 +7,14 @@ import com.welgammal.walid.profitandloss.Database.entities.Elements;
 import com.welgammal.walid.profitandloss.MainActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class ProfitLossRepository {
     private ProfitLossDAO profitLossDAO;
-    private ArrayList<Elements> allogs;
+    private List<Elements> allogs;
 
     public ProfitLossRepository(Application application){
         ProfitLossDB db = ProfitLossDB.getDatabase(application);
@@ -21,11 +22,11 @@ public class ProfitLossRepository {
         this.allogs = this.profitLossDAO.getAllRecords();
 
     }
-    public ArrayList<Elements> getAllogs(){
-        Future<ArrayList<Elements>> future = ProfitLossDB.databaseWriteExecutor.submit(
-                new Callable<ArrayList<Elements>>() {
+    public List<Elements> getAllLogs(){
+        Future<List<Elements>> future = ProfitLossDB.databaseWriteExecutor.submit(
+                new Callable<List<Elements>>() {
                     @Override
-                    public ArrayList<Elements> call() throws Exception {
+                    public List<Elements> call() throws Exception {
                         return profitLossDAO.getAllRecords();
                     }
                 }
