@@ -2,11 +2,11 @@ package com.welgammal.walid.profitandloss.Calc;
 
 import com.welgammal.walid.profitandloss.MainActivity;
 
-public class Calculations {
+public class Calculations extends MainActivity{
     /** Calculate Monthly and Yearly
      * Gross Profit: grossProfit = opeRevenue – costSales
      * */
-    double taxRate = 8.85;
+    static double taxRate = 8.85;
     public static double grossProfit(double rev, double costSales){
 
         return  rev - costSales;
@@ -20,12 +20,12 @@ public class Calculations {
             return opex + otherExp;
     }
     /** Calculate  Operating Income */
-    public double operatingIncome(double grossProfit, double opExpenses) {
+    public static double operatingIncome(double grossProfit, double opExpenses) {
         return grossProfit - opExpenses;
     }
-    public double netIncome(double otherIncome, double opIncome){
+    public static double netIncome(double otherIncome, double opIncome){
 
-        return  ((otherIncome + opIncome) - ((otherIncome + opIncome) * taxRate / 100));
+        return  ((otherIncome + opIncome) - ((otherIncome + opIncome) * Calculations.taxRate / 100));
     }
 
 
