@@ -7,7 +7,7 @@ import androidx.room.Query;
 
 import com.welgammal.walid.profitandloss.Database.entities.Elements;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Dao
 public interface ProfitLossDAO {
@@ -16,6 +16,6 @@ public interface ProfitLossDAO {
     void insert(Elements element);
 
     @Query("SELECT * FROM " + ProfitLossDB.ELEMENTS_TABLE)
-    List<Elements> getAllRecords();
+    ArrayList<Elements> getAllRecords();
 
 }

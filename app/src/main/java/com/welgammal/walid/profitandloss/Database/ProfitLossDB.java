@@ -53,4 +53,6 @@ public abstract class ProfitLossDB extends RoomDatabase {
 
     };
 
+    public abstract ProfitLossDAO profitLossDAO();
+
 }

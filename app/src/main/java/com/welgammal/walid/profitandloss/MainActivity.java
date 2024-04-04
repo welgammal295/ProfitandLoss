@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
     private void updateDisplay(){
-        //String currentInfo = binding.netIncomesOnputTextView.toString();
         double netIncome = calculateNetIncome();
         String newDispay = String.format(Locale.US,"$%.2f", netIncome);
         binding.netIncomesOnputTextView.setText(newDispay);
