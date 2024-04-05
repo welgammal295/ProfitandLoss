@@ -1,15 +1,12 @@
-package com.welgammal.walid.profitandloss.Database;
+package com.welgammal.walid.profitandloss.database;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import java.util.ArrayList;
 
+import com.welgammal.walid.profitandloss.database.entities.Elements;
 
-import com.welgammal.walid.profitandloss.Database.entities.Elements;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Dao

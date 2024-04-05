@@ -11,18 +11,44 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.welgammal.walid.profitandloss.databinding.ActivityMainBinding;
+import com.welgammal.walid.profitandloss.databinding.ActivityMainMenuBinding;
+
 import java.util.ArrayList;
 
 public class MainMenu extends AppCompatActivity {
+    private ActivityMainMenuBinding binding;
+    static String year = "2024";
+    static String month = "January";
+
+    public static String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        year = year;
+    }
+
+    public static String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        month = month;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        binding = ActivityMainMenuBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
         Spinner spinner = findViewById(R.id.years);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent , View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(MainMenu.this, "Please selected a year and a month ", Toast.LENGTH_SHORT).show();
             }
 
@@ -38,23 +64,24 @@ public class MainMenu extends AppCompatActivity {
         yearsList.add("2026");
         yearsList.add("2027");
         yearsList.add("2028");
-        ArrayAdapter<String > adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, yearsList);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, yearsList);
         adapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         spinner.setAdapter(adapter);
+        year = spinner.getSelectedItem().toString();
 
 
         Spinner spinnerM = findViewById(R.id.months);
 
         spinnerM.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView , View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
-
 
         ArrayList<String> monthsList = new ArrayList<>();
         monthsList.add("January");
@@ -70,16 +97,17 @@ public class MainMenu extends AppCompatActivity {
         monthsList.add("November");
         monthsList.add("December");
 
-        ArrayAdapter<String > adapterM = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, monthsList);
+        ArrayAdapter<String> adapterM = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, monthsList);
         adapterM.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         spinnerM.setAdapter(adapterM);
+        month = spinnerM.getSelectedItem().toString();
     }
-
-    public static Intent mainMenuFactory(Context context){
+/** TODO: Pass on year and month to Main activity */
+    public static Intent mainMenuFactory(Context context) {
         Intent intent = new Intent(context, MainMenu.class);
+        //intent.putExtra("data", String.valueOf(spinner.getSelectedItem()));
         return intent;
     }
 
 
-
-}
+    }

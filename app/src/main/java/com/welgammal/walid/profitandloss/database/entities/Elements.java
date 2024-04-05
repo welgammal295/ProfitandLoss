@@ -1,9 +1,9 @@
-package com.welgammal.walid.profitandloss.Database.entities;
+package com.welgammal.walid.profitandloss.database.entities;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.welgammal.walid.profitandloss.Database.ProfitLossDB;
+import com.welgammal.walid.profitandloss.database.ProfitLossDB;
 
 import java.util.Objects;
 
@@ -16,12 +16,15 @@ public class Elements {
     double operatingExpenses = 0.0;
     double otherExpenses = 0.0;
     double otherIncomes = 0.0;
-    int year = 2024;
+    String year = "2024";
     String month = "January";
 
+/** TODO: We need another table that holds netIncome,Gross Profit
+ * Operating Expenses, OperatingIncome (FK: year & month).
+ * */
 
     public Elements(double revenue, double costOfSale, double operatingExpenses,
-                    double otherExpenses, double otherIncomes, int year, String month) {
+                    double otherExpenses, double otherIncomes, String year, String month) {
         this.revenue = revenue;
         this.costOfSale = costOfSale;
         this.operatingExpenses = operatingExpenses;
@@ -79,11 +82,11 @@ public class Elements {
         this.otherIncomes = otherIncomes;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 

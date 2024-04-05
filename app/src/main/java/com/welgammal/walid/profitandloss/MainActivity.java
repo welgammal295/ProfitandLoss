@@ -2,19 +2,26 @@ package com.welgammal.walid.profitandloss;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.LocusId;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.welgammal.walid.profitandloss.Calc.Calculations;
+import com.welgammal.walid.profitandloss.database.ProfitLossRepository;
+import com.welgammal.walid.profitandloss.database.entities.Elements;
 import com.welgammal.walid.profitandloss.databinding.ActivityMainBinding;
 
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
+/** Get instance of database */
+
+    private ProfitLossRepository repository;
 
     double mRevenue = 0.0;
     double mCostOfSale = 0.0;
@@ -36,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        repository = ProfitLossRepository.getRepository(getApplication());  /** get instance of repository */
         binding.netIncomesOnputTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,21 +58,32 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
                 binding.netIncomeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        insertElementRecord();
                         updateDisplay();
                     }
                 });
+    }
+    /** Insert records in database */
+    private void insertElementRecord(){
+        mYear = MainMenu.getYear();
+        mMonth = MainMenu.getMonth();
+        Elements element = new Elements(mRevenue, mCostOfSale, mOperatingExpenses,
+        mOtherExpenses, mOtherIncomes, mYear, mMonth);
+        repository.insertElements(element);
+
     }
     private void updateDisplay(){
         double netIncome = calculateNetIncome();
         String newDispay = String.format(Locale.US,"$%.2f", netIncome);
         binding.netIncomesOnputTextView.setText(newDispay);
+        Log.i(TAG, repository.getAllLogs().toString());
     }
-
+        /* TODO: How to get the year, month, taxrate */
     private double calculateNetIncome(){
+
         try {
             mRevenue =Double.parseDouble(binding.revenueInputEditText.getText().toString());
         }catch(NumberFormatException e){

@@ -1,4 +1,4 @@
-package com.welgammal.walid.profitandloss.Database;
+package com.welgammal.walid.profitandloss.database;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.welgammal.walid.profitandloss.Database.entities.Elements;
+import com.welgammal.walid.profitandloss.database.entities.Elements;
 import com.welgammal.walid.profitandloss.MainActivity;
 
 import java.util.concurrent.ExecutorService;
