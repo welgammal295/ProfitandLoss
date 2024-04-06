@@ -33,9 +33,8 @@ public class MainActivity extends AppCompatActivity {
     double mOtherIncomes = 0.0;
     String mYear = "2024";
     String mMonth = "January";
-
+    int userId;
     public static final String TAG = "DAC_PROFITLOSS";
-    int loggedInUserId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         binding.mainMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = MainMenu.mainMenuFactory(getApplicationContext());
+                Intent intent = MainMenu.mainMenuFactory(getApplicationContext(), userId);
                 startActivity(intent);
             }
         });
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         mYear = MainMenu.getYear();
         mMonth = MainMenu.getMonth();
         Elements element = new Elements(mRevenue, mCostOfSale, mOperatingExpenses,
-        mOtherExpenses, mOtherIncomes, mYear, mMonth, loggedInUserId);
+        mOtherExpenses, mOtherIncomes, mYear, mMonth, MainMenu.loggedInUserId);
         repository.insertElements(element);
 
     }

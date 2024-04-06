@@ -17,9 +17,12 @@ import com.welgammal.walid.profitandloss.databinding.ActivityMainMenuBinding;
 import java.util.ArrayList;
 
 public class MainMenu extends AppCompatActivity {
+    private static final String MAIN_MENU_ACTIVITY_USER_ID = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_USER_ID" ;
     private ActivityMainMenuBinding binding;
     static String year = "2024";
     static String month = "January";
+
+    static int loggedInUserId = -1;
 
     public static String getYear() {
         return year;
@@ -44,6 +47,14 @@ public class MainMenu extends AppCompatActivity {
         binding = ActivityMainMenuBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        loginUser();
+        
+        if(loggedInUserId == -1){
+            Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
+            startActivity(intent);
+        }
+
 
         Spinner spinner = findViewById(R.id.years);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -102,12 +113,18 @@ public class MainMenu extends AppCompatActivity {
         spinnerM.setAdapter(adapterM);
         month = spinnerM.getSelectedItem().toString();
     }
-/** TODO: Pass on year and month to Main activity
- * hint: use putExtra to pass year and month
+
+    private void loginUser() {
+        loggedInUserId = getIntent().getIntExtra(MAIN_MENU_ACTIVITY_USER_ID, -1);
+
+    }
+
+    /** TODO: Pass on year and month to Main activity
+ * hint: use putExtra to pass userID, year and month
  * */
-    public static Intent mainMenuFactory(Context context) {
+        static Intent mainMenuFactory(Context context, int userId) {
         Intent intent = new Intent(context, MainMenu.class);
-        //intent.putExtra("data", String.valueOf(spinner.getSelectedItem()));
+        intent.putExtra(MAIN_MENU_ACTIVITY_USER_ID, userId);
         return intent;
     }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ProfitandLoss</string>
+    <string name="app_name">S.W. Finance</string>
     <string name="revenue">Revenue</string>
     <string name="instruction">Enter your Monthly Information Below</string>
     <string name="enter_monthly_revenue">Enter Monthly Revenue</string>
@@ -20,6 +20,11 @@
     <string name="spinner_year">Select a year: </string>
     <string name="spinner_month">Select a month: </string>
     <string name="user_message">"Please select a year and a month "</string>
+    <string name="login_msg"><![CDATA[Welcome to the S.W. P&L\nPlease Sign in.]]></string>
+    <string name="username">Username</string>
+    <string name="password">password</string>
+    <string name="Login">Login</string>
+    <string name="lfoot_msg">Measure your business\'s sucess</string>
     <string-array name="yearsList">
         <item>2024</item>
         <item>2025</item>
