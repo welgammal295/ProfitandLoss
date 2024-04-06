@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     String mMonth = "January";
 
     public static final String TAG = "DAC_PROFITLOSS";
+    int loggedInUserId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         mYear = MainMenu.getYear();
         mMonth = MainMenu.getMonth();
         Elements element = new Elements(mRevenue, mCostOfSale, mOperatingExpenses,
-        mOtherExpenses, mOtherIncomes, mYear, mMonth);
+        mOtherExpenses, mOtherIncomes, mYear, mMonth, loggedInUserId);
         repository.insertElements(element);
 
     }

@@ -102,7 +102,9 @@ public class MainMenu extends AppCompatActivity {
         spinnerM.setAdapter(adapterM);
         month = spinnerM.getSelectedItem().toString();
     }
-/** TODO: Pass on year and month to Main activity */
+/** TODO: Pass on year and month to Main activity
+ * hint: use putExtra to pass year and month
+ * */
     public static Intent mainMenuFactory(Context context) {
         Intent intent = new Intent(context, MainMenu.class);
         //intent.putExtra("data", String.valueOf(spinner.getSelectedItem()));

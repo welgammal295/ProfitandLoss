@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.welgammal.walid.profitandloss.database.entities.Elements;
 import com.welgammal.walid.profitandloss.MainActivity;
+import com.welgammal.walid.profitandloss.database.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +15,16 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class ProfitLossRepository {
-    private ProfitLossDAO profitLossDAO;
+    private final ProfitLossDAO profitLossDAO;
+
+    private final UserDAO userDAO;
     private List<Elements> allogs;
 
     private static ProfitLossRepository repository;
     private ProfitLossRepository(Application application){
         ProfitLossDB db = ProfitLossDB.getDatabase(application);
         this.profitLossDAO = db.profitLossDAO();
+        this.userDAO = db.userDAO();
         this.allogs = (ArrayList<Elements>) this.profitLossDAO.getAllRecords();
 
     }
@@ -68,6 +72,13 @@ public class ProfitLossRepository {
         ProfitLossDB.databaseWriteExecutor.execute(() ->
         {
             profitLossDAO.insert(element);
+        });
+    }
+
+    public void insertUser(User...user) {
+        ProfitLossDB.databaseWriteExecutor.execute(() ->
+        {
+            userDAO.insert(user);
         });
     }
 }

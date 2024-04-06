@@ -11,13 +11,15 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.welgammal.walid.profitandloss.database.entities.Elements;
 import com.welgammal.walid.profitandloss.MainActivity;
+import com.welgammal.walid.profitandloss.database.entities.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Elements.class}, version = 1, exportSchema = false)
+@Database(entities = {Elements.class, User.class}, version = 3, exportSchema = false)
 public abstract class ProfitLossDB extends RoomDatabase {
 
+    public static final String USER_TABLE = "user_table";
     private static final String DATABASE_NAME = "ProfitLoss_database";
     public static final String ELEMENTS_TABLE = "elementsTable";
 
@@ -46,13 +48,25 @@ public abstract class ProfitLossDB extends RoomDatabase {
     private static final RoomDatabase.Callback addDefaultValues = new RoomDatabase.Callback(){
 
         @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db){
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
             Log.i(MainActivity.TAG, "DATABASE CREATED!");
+            databaseWriteExecutor.execute(() -> {
+                UserDAO dao = INSTANCE.userDAO();
+                dao.deleteAll();
+                User admin = new User("admin1", "admin1");
+                admin.setAdmin(true);
+                dao.insert(admin);
+
+                User testUser1 = new User("testuser1", "testuser1");
+                dao.insert(testUser1);
+            });
         }
 
     };
 
     public abstract ProfitLossDAO profitLossDAO();
+
+    public abstract UserDAO userDAO();
 
 }

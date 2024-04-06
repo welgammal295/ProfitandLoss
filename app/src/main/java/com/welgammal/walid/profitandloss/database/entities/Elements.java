@@ -18,13 +18,14 @@ public class Elements {
     double otherIncomes = 0.0;
     String year = "2024";
     String month = "January";
+    private int userId;
 
 /** TODO: We need another table that holds netIncome,Gross Profit
  * Operating Expenses, OperatingIncome (FK: year & month).
  * */
 
     public Elements(double revenue, double costOfSale, double operatingExpenses,
-                    double otherExpenses, double otherIncomes, String year, String month) {
+                    double otherExpenses, double otherIncomes, String year, String month, int userId) {
         this.revenue = revenue;
         this.costOfSale = costOfSale;
         this.operatingExpenses = operatingExpenses;
@@ -32,6 +33,7 @@ public class Elements {
         this.otherIncomes = otherIncomes;
         this.year = year;
         this.month = month;
+        this.userId =userId;
     }
 
     public int getElementID() {
@@ -98,16 +100,24 @@ public class Elements {
         this.month = month;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Elements elements = (Elements) o;
-        return elementID == elements.elementID && Double.compare(elements.revenue, revenue) == 0 && Double.compare(elements.costOfSale, costOfSale) == 0 && Double.compare(elements.operatingExpenses, operatingExpenses) == 0 && Double.compare(elements.otherExpenses, otherExpenses) == 0 && Double.compare(elements.otherIncomes, otherIncomes) == 0 && year == elements.year && Objects.equals(month, elements.month);
+        return elementID == elements.elementID && Double.compare(elements.revenue, revenue) == 0 && Double.compare(elements.costOfSale, costOfSale) == 0 && Double.compare(elements.operatingExpenses, operatingExpenses) == 0 && Double.compare(elements.otherExpenses, otherExpenses) == 0 && Double.compare(elements.otherIncomes, otherIncomes) == 0 && userId == elements.userId && Objects.equals(year, elements.year) && Objects.equals(month, elements.month);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(elementID, revenue, costOfSale, operatingExpenses, otherExpenses, otherIncomes, year, month);
+        return Objects.hash(elementID, revenue, costOfSale, operatingExpenses, otherExpenses, otherIncomes, year, month, userId);
     }
 }
