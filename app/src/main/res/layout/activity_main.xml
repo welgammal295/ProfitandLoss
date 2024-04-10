@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/instructionDisplayTextView"
         android:layout_width="383dp"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dip"
         android:padding="8dp"
@@ -24,7 +24,7 @@
     <TextView
         android:id="@+id/revenueLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:padding="8dp"
         android:text="@string/revenue"
@@ -36,7 +36,7 @@
     <EditText
         android:id="@+id/revenueInputEditText"
         android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:hint="@string/enter_monthly_revenue"
         android:textSize="14sp"
@@ -50,7 +50,7 @@
     <TextView
         android:id="@+id/costOfSalesLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:padding="8dp"
         android:text="@string/costfsales"
@@ -62,7 +62,7 @@
     <EditText
         android:id="@+id/costOfSalesInputEditText"
         android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:hint="@string/enter_cost_of_sales"
         android:textSize="14sp"
@@ -78,7 +78,7 @@
     <TextView
         android:id="@+id/operatingExpensesLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:padding="8dp"
         android:text="@string/operating_expenses"
@@ -90,7 +90,7 @@
     <EditText
         android:id="@+id/operatingExpensesInputEditText"
         android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:hint="@string/enter_operating_expenses"
         android:textSize="14sp"
@@ -104,7 +104,7 @@
     <TextView
         android:id="@+id/otherExpensesLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:padding="8dp"
         android:text="@string/other_expenses"
@@ -116,7 +116,7 @@
     <EditText
         android:id="@+id/otherExpensesInputEditText"
         android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:hint="@string/enter_other_expenses"
         android:textSize="14sp"
@@ -130,7 +130,7 @@
     <TextView
         android:id="@+id/otherIncomesLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:padding="8dp"
         android:text="@string/other_incomes"
@@ -142,7 +142,7 @@
     <EditText
         android:id="@+id/otherIncomesInputEditText"
         android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:hint="@string/enter_other_incomes"
         android:textSize="14sp"
@@ -155,7 +155,8 @@
     <TextView
         android:id="@+id/netIncomesLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dip"
         android:layout_marginStart="16dp"
         android:padding="8dp"
         android:text="@string/net_income"
@@ -167,7 +168,8 @@
     <TextView
         android:id="@+id/netIncomesOnputTextView"
         android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dip"
         android:layout_marginStart="8dp"
         android:textSize="22sp"
         tools:text="$0.00"
@@ -181,7 +183,7 @@
         android:id="@+id/netIncomeButton"
         android:layout_width="180dp"
         android:layout_height="60dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="60dp"
         android:backgroundTint="@color/light_orange"
         android:gravity="center"
         android:onClick="netIncome"

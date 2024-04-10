@@ -17,9 +17,9 @@
     <string name="net_income_value">%1$.2f</string>
     <string name="welcome">Welcome @users!</string>
     <string name="go">Go!</string>
-    <string name="spinner_year">Select a year: </string>
-    <string name="spinner_month">Select a month: </string>
-    <string name="user_message">"Please select a year and a month "</string>
+    <string name="spinner_year">Select a Year: </string>
+    <string name="spinner_month">Select a Month: </string>
+    <string name="user_message">"Please Select a Year and a Month "</string>
     <string name="login_msg"><![CDATA[Welcome to the S.W. P&L\nPlease Sign in.]]></string>
     <string name="username">Username</string>
     <string name="password">password</string>
