@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/logoimageView"
         android:layout_width="383dp"
-        android:layout_height="160dp"
+        android:layout_height="150dp"
         android:layout_marginTop="30dp"
         android:gravity="center"
         app:srcCompat="@drawable/logoproject"
@@ -23,7 +23,7 @@
     <TextView
         android:id="@+id/loginMessageTextView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:layout_marginTop="50dp"
         android:gravity="center"
         android:text="@string/login_msg"
@@ -37,7 +37,7 @@
         android:id="@+id/userNameLoginEditText"
         android:layout_width="220dp"
         android:layout_height="80dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:autofillHints="Please Enter Username"
         android:hint="@string/username"
         android:gravity="center"
@@ -84,7 +84,7 @@
     <TextView
         android:id="@+id/footMessageTextView"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="@string/lfoot_msg"
