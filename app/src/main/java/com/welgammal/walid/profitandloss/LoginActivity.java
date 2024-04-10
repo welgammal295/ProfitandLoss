@@ -19,13 +19,13 @@ public class LoginActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = MainMenu.mainMenuFactory(getApplicationContext(), 0);
-                startActivity(intent);
-            }
-        });
-    }
+        @Override
+        public void onClick(View v) {
+            Intent intent = MainMenu.mainMenuFactory(getApplicationContext(), 0);
+            startActivity(intent);
+        }
+    });
+}
 
     static Intent loginIntentFactory(Context context) {
         return new Intent(context, LoginActivity.class);

@@ -112,16 +112,26 @@ public class MainMenu extends AppCompatActivity {
         adapterM.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         spinnerM.setAdapter(adapterM);
         month = spinnerM.getSelectedItem().toString();
+        binding.goButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = MainActivity.mainActivityFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });
     }
+
 
     private void loginUser() {
         loggedInUserId = getIntent().getIntExtra(MAIN_MENU_ACTIVITY_USER_ID, -1);
 
     }
 
+
     /** TODO: Pass on year and month to Main activity
  * hint: use putExtra to pass userID, year and month
  * */
+
         static Intent mainMenuFactory(Context context, int userId) {
         Intent intent = new Intent(context, MainMenu.class);
         intent.putExtra(MAIN_MENU_ACTIVITY_USER_ID, userId);

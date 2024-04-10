@@ -66,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
+    static Intent mainActivityFactory(Context context) {
+        return new Intent(context, MainActivity.class);
+
+    }
     /** Insert records in database */
     private void insertElementRecord(){
         mYear = MainMenu.getYear();
