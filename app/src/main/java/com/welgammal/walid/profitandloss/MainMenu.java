@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +26,9 @@ import java.util.ArrayList;
 
 public class MainMenu extends AppCompatActivity {
     private static final String MAIN_MENU_ACTIVITY_USER_ID = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_USER_ID" ;
+    static final String SHARED_PREFERENCE_USERID_KEY = "com.welgammal.walid.profitandloss.SHARED_PREFERENCE_USERID_KEY" ;
+    private static final String SHARED_PREFERENCE_USERID_VALUE = "com.welgammal.walid.profitandloss.SHARED_PREFERENCE_USERID_VALUE" ;
+    private static final int LOGGED_OUT = -1;
     private ActivityMainMenuBinding binding;
     static String year = "2024";
     static String month = "January";
@@ -57,12 +61,12 @@ public class MainMenu extends AppCompatActivity {
         setContentView(view);
 
         loginUser();
-        invalidateOptionsMenu();
         
         if(loggedInUserId == -1){
             Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
             startActivity(intent);
         }
+        invalidateOptionsMenu();
 
 
         Spinner spinner = findViewById(R.id.years);
@@ -132,9 +136,15 @@ public class MainMenu extends AppCompatActivity {
 
 
     private void loginUser() {
-        loggedInUserId = getIntent().getIntExtra(MAIN_MENU_ACTIVITY_USER_ID, -1);
-        user = new User("Jack", "password");
-
+        // check shared preference for logged in user
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFERENCE_USERID_KEY,
+                Context.MODE_PRIVATE);
+        loggedInUserId = sharedPreferences.getInt(SHARED_PREFERENCE_USERID_VALUE, LOGGED_OUT);
+        if(loggedInUserId != LOGGED_OUT){
+            return;
+        }
+        // check intent for logged in user
+        loggedInUserId = getIntent().getIntExtra(MAIN_MENU_ACTIVITY_USER_ID, LOGGED_OUT);
     }
 
     @Override
@@ -181,19 +191,25 @@ public class MainMenu extends AppCompatActivity {
     }
 
     private void logout() {
-        //TODO: Finish logout method
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFERENCE_USERID_KEY
+                , Context.MODE_PRIVATE);
+        SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
+        sharedPrefEditor.putInt(SHARED_PREFERENCE_USERID_KEY, LOGGED_OUT);
+        sharedPrefEditor.apply();
+
+        getIntent().putExtra(MAIN_MENU_ACTIVITY_USER_ID, LOGGED_OUT);
+
         startActivity(LoginActivity.loginIntentFactory(getApplicationContext()));
+
+
+        /** TODO: Pass on year, month, and userId to Main activity
+         * hint: use putExtra to pass userID, year and month
+         * */
     }
-
-    /** TODO: Pass on year, month, and userId to Main activity
- * hint: use putExtra to pass userID, year and month
- * */
-
-        static Intent mainMenuFactory(Context context, int userId) {
-        Intent intent = new Intent(context, MainMenu.class);
-        intent.putExtra(MAIN_MENU_ACTIVITY_USER_ID, userId);
-        return intent;
-    }
-
+        static Intent mainMenuFactory (Context context,int userId){
+            Intent intent = new Intent(context, MainMenu.class);
+            intent.putExtra(MAIN_MENU_ACTIVITY_USER_ID, userId);
+            return intent;
+        }
 
     }
