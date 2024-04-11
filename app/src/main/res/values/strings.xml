@@ -24,7 +24,7 @@
     <string name="username">Username</string>
     <string name="password">password</string>
     <string name="Login">Login</string>
-    <string name="lfoot_msg">Measure your business\'s sucess</string>
+    <string name="lfoot_msg">Measure your business\'s success</string>
     <string-array name="yearsList">
         <item>2024</item>
         <item>2025</item>

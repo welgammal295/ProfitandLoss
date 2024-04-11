@@ -3,6 +3,7 @@ package com.welgammal.walid.profitandloss.database;
 import android.app.Application;
 import android.util.Log;
 
+import com.welgammal.walid.profitandloss.MainMenu;
 import com.welgammal.walid.profitandloss.database.entities.Elements;
 import com.welgammal.walid.profitandloss.MainActivity;
 import com.welgammal.walid.profitandloss.database.entities.User;
@@ -80,5 +81,21 @@ public class ProfitLossRepository {
         {
             userDAO.insert(user);
         });
+    }
+
+    public User getUserByUserName(String username) {
+        Future<User> future = ProfitLossDB.databaseWriteExecutor.submit(
+                new Callable<User>() {
+                    @Override
+                    public User call() throws Exception {
+                        return userDAO.getUserByUserName(username);
+                    }
+                });
+        try{
+            future.get();
+        } catch (InterruptedException | ExecutionException e){
+            Log.i(MainActivity.TAG, "Problem when getting user by username");
+        }
+        return null;
     }
 }

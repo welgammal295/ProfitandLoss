@@ -185,7 +185,7 @@ public class MainMenu extends AppCompatActivity {
         startActivity(LoginActivity.loginIntentFactory(getApplicationContext()));
     }
 
-    /** TODO: Pass on year and month to Main activity
+    /** TODO: Pass on year, month, and userId to Main activity
  * hint: use putExtra to pass userID, year and month
  * */
 
