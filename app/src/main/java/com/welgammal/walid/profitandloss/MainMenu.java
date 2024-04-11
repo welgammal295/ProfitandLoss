@@ -3,6 +3,7 @@ package com.welgammal.walid.profitandloss;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.welgammal.walid.profitandloss.database.ProfitLossRepository;
 import com.welgammal.walid.profitandloss.database.entities.User;
 import com.welgammal.walid.profitandloss.databinding.ActivityMainBinding;
 import com.welgammal.walid.profitandloss.databinding.ActivityMainMenuBinding;
@@ -61,13 +63,10 @@ public class MainMenu extends AppCompatActivity {
         setContentView(view);
 
         loginUser();
-        
         if(loggedInUserId == -1){
             Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
             startActivity(intent);
         }
-        invalidateOptionsMenu();
-
 
         Spinner spinner = findViewById(R.id.years);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -145,6 +144,17 @@ public class MainMenu extends AppCompatActivity {
         }
         // check intent for logged in user
         loggedInUserId = getIntent().getIntExtra(MAIN_MENU_ACTIVITY_USER_ID, LOGGED_OUT);
+        if (loggedInUserId == LOGGED_OUT){
+            return;
+        }
+        ProfitLossRepository repository = ProfitLossRepository.getRepository(getApplication());
+        LiveData<User> userObserver = repository.getUserByUserId(loggedInUserId);
+        userObserver.observe(this, user -> {
+            if (user != null){
+                invalidateOptionsMenu();
+            }
+        });
+
     }
 
     @Override
@@ -157,8 +167,12 @@ public class MainMenu extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem item = menu.findItem(R.id.logoutMenuItem);
-        item.setVisible(true);
-        item.setTitle(user.getUsername());
+        if (user != null) {
+            item.setVisible(true);
+            item.setTitle(user.getUsername());
+        } else {
+            item.setTitle("Guest");
+        }
         item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(@NonNull MenuItem item) {

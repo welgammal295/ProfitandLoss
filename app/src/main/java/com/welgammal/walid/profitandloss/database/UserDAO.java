@@ -30,4 +30,6 @@ public interface UserDAO {
     @Query("SELECT * FROM " + ProfitLossDB.USER_TABLE + " WHERE username == :username")
     LiveData<User> getUserByUserName(String username);
 
+    @Query("SELECT * FROM " + ProfitLossDB.USER_TABLE + " WHERE id == :userId")
+    LiveData<User> getUserByUserId(int userId);
 }
