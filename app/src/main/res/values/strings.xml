@@ -16,7 +16,7 @@
     <string name="income_review">Income Review</string>
     <string name="main_menu">Main Menu</string>
     <string name="net_income_value">%1$.2f</string>
-    <string name="welcome">Welcome @users!</string>
+    <string name="welcome">Welcome </string>
     <string name="go">Go!</string>
     <string name="spinner_year">Select a Year: </string>
     <string name="spinner_month">Select a Month: </string>
@@ -29,6 +29,7 @@
     <string name="gross_profit">Gross Profit</string>
     <string name="sharedprefrence_file_key">welgammalPreferenceFileNamePL</string>
     <string name="preference_userId_key">welgammalPreferenceUserIdPLKey</string>
+    <string name="setTaxRate">Set Tax Rate!</string>
     <string-array name="yearsList">
         <item>2024</item>
         <item>2025</item>

@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class MainMenu extends AppCompatActivity {
     static String month = "January";
     protected static int loggedInUserId = -1;
     private User user;
+    private Button taxRateButton;
 
     public static String getYear() {
         return year;
@@ -131,6 +133,7 @@ public class MainMenu extends AppCompatActivity {
         adapterM.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         spinnerM.setAdapter(adapterM);
         month = spinnerM.getSelectedItem().toString();
+
         binding.goButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -165,6 +168,12 @@ public class MainMenu extends AppCompatActivity {
             if (this.user != null) {
                 invalidateOptionsMenu();
             }
+            if (this.user.isAdmin()){
+                invalidateOptionsMenu();
+                taxRateButton = findViewById(R.id.setTaxRate);
+                taxRateButton.setVisibility(View.VISIBLE);
+            }
+
         });
     }
 
@@ -240,6 +249,7 @@ public class MainMenu extends AppCompatActivity {
         sharedPrefEditor.apply();
 
         getIntent().putExtra(MAIN_MENU_ACTIVITY_USER_ID, LOGGED_OUT);
+
     }
 
 
