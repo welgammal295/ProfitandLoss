@@ -13,6 +13,7 @@
     <string name="other_incomes">Other Incomes</string>
     <string name="enter_other_incomes">Enter Other Incomes</string>
     <string name="net_income">Net Income</string>
+    <string name="income_review">Income Review</string>
     <string name="main_menu">Main Menu</string>
     <string name="net_income_value">%1$.2f</string>
     <string name="welcome">Welcome @users!</string>
@@ -25,6 +26,7 @@
     <string name="password">password</string>
     <string name="Login">Login</string>
     <string name="lfoot_msg">Measure your business\'s success</string>
+    <string name="gross_profit">Gross Profit</string>
     <string-array name="yearsList">
         <item>2024</item>
         <item>2025</item>

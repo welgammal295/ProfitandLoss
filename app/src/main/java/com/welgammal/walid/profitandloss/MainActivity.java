@@ -18,6 +18,7 @@ import com.welgammal.walid.profitandloss.databinding.ActivityMainBinding;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+
     private ActivityMainBinding binding;
 /** Get instance of database */
 
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
 
         repository = ProfitLossRepository.getRepository(getApplication());  /** get instance of repository */
-        binding.netIncomesOnputTextView.setOnClickListener(new View.OnClickListener() {
+        binding.netIncomesOutputTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -81,24 +82,17 @@ public class MainActivity extends AppCompatActivity {
     }
     private void updateDisplay(){
         double netIncome = calculateNetIncome();
-        String newDispay = String.format(Locale.US,"$%.2f", netIncome);
-        binding.netIncomesOnputTextView.setText(newDispay);
+        double grossProfit = calculateGrossProfit();
+        String grossDisplay = String.format(Locale.US,"$%.2f", grossProfit);
+        String netDisplay = String.format(Locale.US,"$%.2f", netIncome);
+        binding.grossProfitOutputTextView.setText(grossDisplay);
+        binding.netIncomesOutputTextView.setText(netDisplay);
         Log.i(TAG, repository.getAllLogs().toString());
     }
         /* TODO: How to get the year, month, taxrate */
     private double calculateNetIncome(){
 
-        try {
-            mRevenue =Double.parseDouble(binding.revenueInputEditText.getText().toString());
-        }catch(NumberFormatException e){
-            Log.d(TAG, "Error reading value from Revenue edit text. ");
-        }
-
-        try {
-            mCostOfSale =Double.parseDouble(binding.costOfSalesInputEditText.getText().toString());
-        }catch(NumberFormatException e){
-            Log.d(TAG, "Error reading value from Cost of Sales edit text. ");
-        }
+        calculateGrossProfit();
         try {
             mOperatingExpenses =Double.parseDouble(binding.operatingExpensesInputEditText.getText().toString());
         }catch(NumberFormatException e){
@@ -122,6 +116,21 @@ public class MainActivity extends AppCompatActivity {
         operatingIncome = Calculations.operatingIncome(mGrossProfit, totalOperatingExpenses);
 
         return Calculations.netIncome(mOtherIncomes, operatingIncome);
+    }
+
+    private double calculateGrossProfit() {
+        try {
+            mRevenue =Double.parseDouble(binding.revenueInputEditText.getText().toString());
+        }catch(NumberFormatException e){
+            Log.d(TAG, "Error reading value from Revenue edit text. ");
+        }
+
+        try {
+            mCostOfSale =Double.parseDouble(binding.costOfSalesInputEditText.getText().toString());
+        }catch(NumberFormatException e){
+            Log.d(TAG, "Error reading value from Cost of Sales edit text. ");
+        }
+        return mRevenue - mCostOfSale;
     }
 
 

@@ -1,14 +1,18 @@
 package com.welgammal.walid.profitandloss;
 
+import static com.welgammal.walid.profitandloss.MainActivity.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.welgammal.walid.profitandloss.database.ProfitLossRepository;
 import com.welgammal.walid.profitandloss.database.entities.User;
 import com.welgammal.walid.profitandloss.databinding.ActivityMainBinding;
 import com.welgammal.walid.profitandloss.databinding.ActivityMainMenuBinding;
@@ -27,12 +32,14 @@ import java.util.ArrayList;
 public class MainMenu extends AppCompatActivity {
     private static final String MAIN_MENU_ACTIVITY_USER_ID = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_USER_ID" ;
     static final String SHARED_PREFERENCE_USERID_KEY = "com.welgammal.walid.profitandloss.SHARED_PREFERENCE_USERID_KEY" ;
+    private static final String SAVED_INSTANCE_STATE_USERID_KEY = "com.welgammal.walid.profitandloss.SAVED_INSTANCE_STATE_USERID_KEY" ;
     private static final String SHARED_PREFERENCE_USERID_VALUE = "com.welgammal.walid.profitandloss.SHARED_PREFERENCE_USERID_VALUE" ;
+
     private static final int LOGGED_OUT = -1;
     private ActivityMainMenuBinding binding;
+    public ProfitLossRepository repository;
     static String year = "2024";
     static String month = "January";
-
     protected static int loggedInUserId = -1;
     private User user;
 
@@ -55,18 +62,17 @@ public class MainMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
         binding = ActivityMainMenuBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
-        loginUser();
-        
+        repository = ProfitLossRepository.getRepository(getApplication());
+        loginUser(savedInstanceState);
+
         if(loggedInUserId == -1){
             Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
             startActivity(intent);
         }
-        invalidateOptionsMenu();
 
 
         Spinner spinner = findViewById(R.id.years);
@@ -132,20 +138,50 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
 
-    private void loginUser() {
+    private void loginUser(Bundle savedInstanceState) {
         // check shared preference for logged in user
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(SHARED_PREFERENCE_USERID_KEY,
                 Context.MODE_PRIVATE);
-        loggedInUserId = sharedPreferences.getInt(SHARED_PREFERENCE_USERID_VALUE, LOGGED_OUT);
-        if(loggedInUserId != LOGGED_OUT){
+        if (sharedPreferences.contains(SHARED_PREFERENCE_USERID_VALUE)){
+            loggedInUserId = sharedPreferences.getInt(SHARED_PREFERENCE_USERID_VALUE, LOGGED_OUT);
+        }
+        if (loggedInUserId == LOGGED_OUT & savedInstanceState != null && savedInstanceState.containsKey(SAVED_INSTANCE_STATE_USERID_KEY)){
+            loggedInUserId = savedInstanceState.getInt(SAVED_INSTANCE_STATE_USERID_KEY, LOGGED_OUT);
+        }
+        if (loggedInUserId == LOGGED_OUT){
+            loggedInUserId = getIntent().getIntExtra(MAIN_MENU_ACTIVITY_USER_ID, LOGGED_OUT);
+        }
+        if (loggedInUserId == LOGGED_OUT) {
             return;
         }
-        // check intent for logged in user
-        loggedInUserId = getIntent().getIntExtra(MAIN_MENU_ACTIVITY_USER_ID, LOGGED_OUT);
+
+        LiveData<User> userObserver = repository.getUserByUserId(loggedInUserId);
+        userObserver.observe(this, user -> {
+            this.user = user;
+            if (this.user != null) {
+                invalidateOptionsMenu();
+            } else {
+                logout();
+            }
+        });
     }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState){
+
+        super.onSaveInstanceState(outState);
+        outState.putInt(SAVED_INSTANCE_STATE_USERID_KEY, loggedInUserId);
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFERENCE_USERID_KEY,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
+        sharedPrefEditor.putInt(MainMenu.SHARED_PREFERENCE_USERID_KEY, loggedInUserId);
+        sharedPrefEditor.apply();
+        }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -158,6 +194,9 @@ public class MainMenu extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem item = menu.findItem(R.id.logoutMenuItem);
         item.setVisible(true);
+        if (user == null) {
+            return false;
+        }
         item.setTitle(user.getUsername());
         item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -173,6 +212,7 @@ public class MainMenu extends AppCompatActivity {
     private void showLogoutDialog(){
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainMenu.this);
         final AlertDialog alertDialog = alertBuilder.create();
+
         alertBuilder.setMessage("Are you sure you want to log out?");
         alertBuilder.setPositiveButton("Log out?", new DialogInterface.OnClickListener() {
             @Override
@@ -200,12 +240,12 @@ public class MainMenu extends AppCompatActivity {
         getIntent().putExtra(MAIN_MENU_ACTIVITY_USER_ID, LOGGED_OUT);
 
         startActivity(LoginActivity.loginIntentFactory(getApplicationContext()));
+    }
 
 
         /** TODO: Pass on year, month, and userId to Main activity
          * hint: use putExtra to pass userID, year and month
          * */
-    }
         static Intent mainMenuFactory (Context context,int userId){
             Intent intent = new Intent(context, MainMenu.class);
             intent.putExtra(MAIN_MENU_ACTIVITY_USER_ID, userId);
