@@ -83,8 +83,9 @@ public class MainActivity extends AppCompatActivity {
     private void updateDisplay(){
         double netIncome = calculateNetIncome();
         double grossProfit = calculateGrossProfit();
-        String grossDisplay = String.format(Locale.US,"$%.2f", grossProfit);
-        String netDisplay = String.format(Locale.US,"$%.2f", netIncome);
+        String grossDisplay = String.format(Locale.US, "%s$%.2f", grossProfit < 0 ? "-" : "+", Math.abs(grossProfit));
+        String netDisplay = String.format(Locale.US, "%s$%.2f", netIncome < 0 ? "-" : "+", Math.abs(netIncome));
+        //String.format(Locale.US,"$%.2f", netIncome);
         binding.grossProfitOutputTextView.setText(grossDisplay);
         binding.netIncomesOutputTextView.setText(netDisplay);
         Log.i(TAG, repository.getAllLogs().toString());

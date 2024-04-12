@@ -27,6 +27,8 @@
     <string name="Login">Login</string>
     <string name="lfoot_msg">Measure your business\'s success</string>
     <string name="gross_profit">Gross Profit</string>
+    <string name="sharedprefrence_file_key">welgammalPreferenceFileNamePL</string>
+    <string name="preference_userId_key">welgammalPreferenceUserIdPLKey</string>
     <string-array name="yearsList">
         <item>2024</item>
         <item>2025</item>
