@@ -32,6 +32,8 @@ import java.util.ArrayList;
 
 public class MainMenu extends AppCompatActivity {
     private static final String MAIN_MENU_ACTIVITY_USER_ID = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_USER_ID" ;
+    private static final String MAIN_MENU_ACTIVITY_YEAR = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_YEAR" ;
+    private static final String MAIN_MENU_ACTIVITY_MONTH = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_MONTH" ;
     static final String SHARED_PREFERENCE_USERID_KEY = "com.welgammal.walid.profitandloss.SHARED_PREFERENCE_USERID_KEY" ;
     private static final String SAVED_INSTANCE_STATE_USERID_KEY = "com.welgammal.walid.profitandloss.SAVED_INSTANCE_STATE_USERID_KEY" ;
 
@@ -99,7 +101,7 @@ public class MainMenu extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, yearsList);
         adapter.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         spinner.setAdapter(adapter);
-        year = spinner.getSelectedItem().toString();
+
 
 
         Spinner spinnerM = findViewById(R.id.months);
@@ -132,12 +134,17 @@ public class MainMenu extends AppCompatActivity {
         ArrayAdapter<String> adapterM = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, monthsList);
         adapterM.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
         spinnerM.setAdapter(adapterM);
-        month = spinnerM.getSelectedItem().toString();
 
+
+        /** Pass on year, month, and userId to Main activity
+         *
+         * */
         binding.goButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = MainActivity.mainActivityFactory(getApplicationContext());
+                year = spinner.getSelectedItem().toString();
+                month = spinnerM.getSelectedItem().toString();
+                Intent intent = MainActivity.mainActivityFactory(MainMenu.this, loggedInUserId, year, month);
                 startActivity(intent);
             }
         });
@@ -252,10 +259,6 @@ public class MainMenu extends AppCompatActivity {
 
     }
 
-
-        /** TODO: Pass on year, month, and userId to Main activity
-         * hint: use putExtra to pass userID, year and month
-         * */
         static Intent mainMenuFactory (Context context,int userId){
             Intent intent = new Intent(context, MainMenu.class);
             intent.putExtra(MAIN_MENU_ACTIVITY_USER_ID, userId);

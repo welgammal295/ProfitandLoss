@@ -39,7 +39,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:hint="@string/enter_monthly_revenue"
-        android:textSize="14sp"
+        android:textSize="13sp"
         android:textColor="@color/material_dynamic_neutral90"
         android:inputType="numberDecimal"
         android:padding="8dp"
@@ -156,7 +156,7 @@
     <TextView
         android:id="@+id/grossProfitLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="20dip"
         android:layout_marginStart="16dp"
         android:padding="8dp"
@@ -169,7 +169,7 @@
     <TextView
         android:id="@+id/grossProfitOutputTextView"
         android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:textSize="22sp"
         tools:text="$0.00"
@@ -182,7 +182,7 @@
     <TextView
         android:id="@+id/netIncomesLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="20dip"
         android:layout_marginStart="16dp"
         android:padding="8dp"
@@ -195,7 +195,7 @@
     <TextView
         android:id="@+id/netIncomesOutputTextView"
         android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="20dip"
         android:layout_marginStart="8dp"
         android:textSize="22sp"

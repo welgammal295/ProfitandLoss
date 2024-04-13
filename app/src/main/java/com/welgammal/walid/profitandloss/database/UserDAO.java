@@ -1,3 +1,12 @@
+/**
+ * Name: Walid Elgammal
+ * Date: 04/13/2024
+ * Explanation: Part 02 Login and Landing Page
+ * Persistent storage -  Room database wrapper
+ * SharedPreferences - two Predefined Users
+ * Check Youtube Video
+ */
+
 package com.welgammal.walid.profitandloss.database;
 
 import androidx.lifecycle.LiveData;

@@ -16,6 +16,7 @@ import com.welgammal.walid.profitandloss.database.entities.Elements;
 import com.welgammal.walid.profitandloss.databinding.ActivityMainBinding;
 
 import java.util.Locale;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
 /** Get instance of database */
 
     private ProfitLossRepository repository;
-
+    private static final String MAIN_MENU_ACTIVITY_YEAR = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_YEAR" ;
+    private static final String MAIN_MENU_ACTIVITY_MONTH = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_MONTH" ;
     double mRevenue = 0.0;
     double mCostOfSale = 0.0;
     double mGrossProfit = 0.0;
@@ -32,10 +34,11 @@ public class MainActivity extends AppCompatActivity {
     double operatingIncome =0.0;
     double mOtherExpenses = 0.0;
     double mOtherIncomes = 0.0;
-    String mYear = "2024";
-    String mMonth = "January";
     int userId;
     public static final String TAG = "DAC_PROFITLOSS";
+    String mYear;
+    String mMonth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +59,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = MainMenu.mainMenuFactory(getApplicationContext(), userId);
+
                 startActivity(intent);
             }
         });
+
                 binding.netIncomeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -67,16 +72,19 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-    static Intent mainActivityFactory(Context context) {
-        return new Intent(context, MainActivity.class);
+
+    public static Intent mainActivityFactory(Context context, int loggedInUserId, String mYear, String month) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra("MAIN_MENU_ACTIVITY_YEAR", mYear);
+        return intent;
 
     }
+
+
     /** Insert records in database */
     private void insertElementRecord(){
-        mYear = MainMenu.getYear();
-        mMonth = MainMenu.getMonth();
         Elements element = new Elements(mRevenue, mCostOfSale, mOperatingExpenses,
-        mOtherExpenses, mOtherIncomes, mYear, mMonth, MainMenu.loggedInUserId);
+        mOtherExpenses, mOtherIncomes, MainMenu.year, MainMenu.month, MainMenu.loggedInUserId);
         repository.insertElements(element);
 
     }
