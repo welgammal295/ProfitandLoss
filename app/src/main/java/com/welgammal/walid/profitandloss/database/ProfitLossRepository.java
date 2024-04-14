@@ -79,7 +79,12 @@ public class ProfitLossRepository {
     }
 
 
-
+    public void insertUserRecord(User...user) {
+        ProfitLossDB.databaseWriteExecutor.execute(() ->
+        {
+            userDAO.insert(user);
+        });
+    }
     public LiveData<User> getUserByUserName(String username) {
                         return userDAO.getUserByUserName(username);
                     }

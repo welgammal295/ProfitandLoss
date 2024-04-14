@@ -9,9 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 import com.welgammal.walid.profitandloss.LoginActivity;
-import com.welgammal.walid.profitandloss.MainMenu;
 import com.welgammal.walid.profitandloss.R;
 import com.welgammal.walid.profitandloss.database.ProfitLossDB;
 import com.welgammal.walid.profitandloss.database.ProfitLossRepository;
@@ -21,6 +19,7 @@ import com.welgammal.walid.profitandloss.databinding.ActivityUserSignupBinding;
 
 public class UserSignup extends AppCompatActivity {
     private ActivityUserSignupBinding binding;
+
     private ProfitLossRepository repository;
     String username = "";
     String password = "";
@@ -45,8 +44,8 @@ public class UserSignup extends AppCompatActivity {
         binding.signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                insertUserRecord();
                 Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
-
                 startActivity(intent);
 
             }
@@ -57,16 +56,18 @@ public class UserSignup extends AppCompatActivity {
 
     /** Insert records in database */
     private void insertUserRecord(){
+        getUserRecord();
         User user = new User(username, password);
-       // repository.insertUser(user);
+        if (username == null || password == null){
+            Toast.makeText(getApplicationContext(), " Please enter a username and password", Toast.LENGTH_LONG).show();
+        }
+        else {
+            repository.insertUserRecord(user);
+
+        }
+
 
     }
-//    public void insertUserRecord(User...user) {
-//        ProfitLossDB.databaseWriteExecutor.execute(() ->
-//        {
-//            userDAO.insert(user);
-//        });
-//    }
 
     private void getUserRecord() {
 
@@ -80,13 +81,7 @@ public class UserSignup extends AppCompatActivity {
             }catch(NumberFormatException e){
                 Log.d(TAG, "Error reading value from password text. ");
             }
-            if (username == null || password == null){
-                Toast.makeText(getApplicationContext(), " Please enter a username and password", Toast.LENGTH_LONG).show();
-            }
-            else {
 
-
-    }
 
     }
 }

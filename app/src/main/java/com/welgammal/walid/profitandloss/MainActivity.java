@@ -73,9 +73,10 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    public static Intent mainActivityFactory(Context context, int loggedInUserId, String mYear, String month) {
+    public static Intent mainActivityFactory(Context context, int loggedInUserId, String year, String month) {
         Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra("MAIN_MENU_ACTIVITY_YEAR", mYear);
+        intent.putExtra("MAIN_MENU_ACTIVITY_YEAR", year);
+        intent.putExtra("MAIN_MENU_ACTIVITY_YEAR", month);
         return intent;
 
     }

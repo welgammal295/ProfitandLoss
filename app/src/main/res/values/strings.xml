@@ -33,7 +33,7 @@
     <string name="create_account_msg">Create Account</string>
     <string name="new_account_msg">New to S.W. Finance? Sign up Here!</string>
     <string name="signup">CREATE</string>
-    <string name="new_password">Type Your New Password</string>
+    <string name="new_password">Enter New Password</string>
     <string name="new_username">Enter New Username</string>
     <string-array name="yearsList">
         <item>2024</item>
