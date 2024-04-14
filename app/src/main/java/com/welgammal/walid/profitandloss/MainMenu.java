@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 import com.welgammal.walid.profitandloss.database.ProfitLossRepository;
 import com.welgammal.walid.profitandloss.database.entities.User;
-import com.welgammal.walid.profitandloss.databinding.ActivityMainBinding;
 import com.welgammal.walid.profitandloss.databinding.ActivityMainMenuBinding;
 
 import java.util.ArrayList;

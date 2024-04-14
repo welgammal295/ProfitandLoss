@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.welgammal.walid.profitandloss.database.ProfitLossRepository;
 import com.welgammal.walid.profitandloss.database.entities.User;
+import com.welgammal.walid.profitandloss.database.ui.UserSignup;
 import com.welgammal.walid.profitandloss.databinding.ActivityLoginBinding;
 
 import java.security.PrivateKey;
@@ -30,6 +31,14 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(view);
 
         repository = ProfitLossRepository.getRepository(getApplication());
+        binding.createAccountLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = UserSignup.userSignFactory(getApplicationContext());
+
+                startActivity(intent);
+            }
+        });
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    static Intent loginIntentFactory(Context context) {
+    public static Intent loginIntentFactory(Context context) {
         return new Intent(context, LoginActivity.class);
 
     }

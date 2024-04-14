@@ -13,6 +13,7 @@ import com.welgammal.walid.profitandloss.database.entities.Elements;
 import com.welgammal.walid.profitandloss.MainActivity;
 import com.welgammal.walid.profitandloss.database.entities.User;
 
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -45,6 +46,7 @@ public abstract class ProfitLossDB extends RoomDatabase {
         }
         return INSTANCE;
     }
+    /** Predefined users declared and initialized */
     private static final RoomDatabase.Callback addDefaultValues = new RoomDatabase.Callback(){
 
         @Override

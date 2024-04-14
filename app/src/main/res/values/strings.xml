@@ -30,6 +30,11 @@
     <string name="sharedprefrence_file_key">welgammalPreferenceFileNamePL</string>
     <string name="preference_userId_key">welgammalPreferenceUserIdPLKey</string>
     <string name="setTaxRate">Set Tax Rate!</string>
+    <string name="create_account_msg">Create Account</string>
+    <string name="new_account_msg">New to S.W. Finance? Sign up Here!</string>
+    <string name="signup">CREATE</string>
+    <string name="new_password">Type Your New Password</string>
+    <string name="new_username">Enter New Username</string>
     <string-array name="yearsList">
         <item>2024</item>
         <item>2025</item>
