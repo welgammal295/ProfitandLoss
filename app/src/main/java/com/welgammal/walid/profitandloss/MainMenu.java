@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -53,14 +54,26 @@ public class MainMenu extends AppCompatActivity {
         if(loggedInUserId == -1){
             Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
             startActivity(intent);
+        }else{ //Pop up message to only be shown when opening Main menu after a 1 second delay
+            new CountDownTimer(1000, 1000) {
+                public void onTick(long millisUntilFinished) {
+                    // Do nothing during the countdown
+                }
+
+                public void onFinish() {
+                    // Show the toast message after the delay
+                    Toast.makeText(MainMenu.this, "Please select a year and a month ", Toast.LENGTH_SHORT).show();
+                }
+            }.start();
         }
+
 
 
         Spinner spinner = findViewById(R.id.years);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainMenu.this, "Please selected a year and a month ", Toast.LENGTH_SHORT).show();
+                //TODO: Ask Walid about this void that held toast originally
             }
 
             @Override
