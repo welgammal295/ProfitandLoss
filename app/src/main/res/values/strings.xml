@@ -21,9 +21,11 @@
     <string name="spinner_month">Select a month: </string>
     <string name="user_message">"Please select a year and a month "</string>
     <string name="login_msg"><![CDATA[Welcome to the S.W. P&L\nPlease Sign in.]]></string>
+    <string name="user_creation_msg"><![CDATA[Create Account]]></string>
     <string name="username">Username</string>
     <string name="password">password</string>
     <string name="Login">Login</string>
+    <string name="continueUser">Continue</string>
     <string name="lfoot_msg">Measure your business\'s sucess</string>
     <string name="logout">Logout</string>
     <string-array name="yearsList">
