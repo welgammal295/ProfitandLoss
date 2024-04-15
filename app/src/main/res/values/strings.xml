@@ -25,6 +25,7 @@
     <string name="password">password</string>
     <string name="Login">Login</string>
     <string name="lfoot_msg">Measure your business\'s sucess</string>
+    <string name="logout">Logout</string>
     <string-array name="yearsList">
         <item>2024</item>
         <item>2025</item>

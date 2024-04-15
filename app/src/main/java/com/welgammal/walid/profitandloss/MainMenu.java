@@ -119,6 +119,14 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Logout Button Listener
+        binding.logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logoutUser();
+            }
+        });
     }
 
 
@@ -132,11 +140,21 @@ public class MainMenu extends AppCompatActivity {
  * hint: use putExtra to pass userID, year and month
  * */
 
-        static Intent mainMenuFactory(Context context, int userId) {
-        Intent intent = new Intent(context, MainMenu.class);
-        intent.putExtra(MAIN_MENU_ACTIVITY_USER_ID, userId);
-        return intent;
+    static Intent mainMenuFactory(Context context, int userId) {
+    Intent intent = new Intent(context, MainMenu.class);
+    intent.putExtra(MAIN_MENU_ACTIVITY_USER_ID, userId);
+    return intent;
+    }
+
+    //method for logout button
+    private void logoutUser(){
+        //TODO: clear or save data here
+
+        //Back to login page
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 
-    }
+}

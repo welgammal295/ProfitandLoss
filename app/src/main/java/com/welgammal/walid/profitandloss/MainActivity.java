@@ -8,6 +8,7 @@ import android.content.LocusId;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.welgammal.walid.profitandloss.Calc.Calculations;
@@ -58,13 +59,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-                binding.netIncomeButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        insertElementRecord();
-                        updateDisplay();
-                    }
-                });
+        binding.netIncomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertElementRecord();
+                updateDisplay();
+            }
+        });
+
     }
     static Intent mainActivityFactory(Context context) {
         return new Intent(context, MainActivity.class);
