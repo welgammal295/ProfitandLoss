@@ -101,7 +101,9 @@
         tools:layout_editor_absoluteX="229dp"
         tools:layout_editor_absoluteY="429dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/selectTaxRateTextView"
-        app:layout_constraintStart_toEndOf="@id/selectTaxRateTextView"/>
+        app:layout_constraintStart_toEndOf="@id/selectTaxRateTextView"
+        android:visibility="invisible"
+        tools:visibility="visible"/>
 
     <TextView
         android:id="@+id/selectMonthLabelTextView"
@@ -127,7 +129,9 @@
         android:textColor="@color/light_orange"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectMonthLabelTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/selectMonthLabelTextView"
+        android:visibility="invisible"
+        tools:visibility="visible"/>
 
     <Button
         android:id="@+id/setTaxRate"

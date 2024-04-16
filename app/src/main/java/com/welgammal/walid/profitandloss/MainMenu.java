@@ -20,7 +20,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.welgammal.walid.profitandloss.database.ProfitLossRepository;
@@ -44,6 +46,8 @@ public class MainMenu extends AppCompatActivity {
     protected static int loggedInUserId = -1;
     private User user;
     private Button taxRateButton;
+    private TextView selectTaxRateTextView;
+    private EditText taxRateEditText;
 
     public static String getYear() {
         return year;
@@ -176,8 +180,15 @@ public class MainMenu extends AppCompatActivity {
             }
             if (this.user.isAdmin()){
                 invalidateOptionsMenu();
+                //Tax Rate Button
                 taxRateButton = findViewById(R.id.setTaxRate);
                 taxRateButton.setVisibility(View.VISIBLE);
+                //Tax Rate EditText
+                taxRateEditText = findViewById(R.id.taxRateEditText);
+                taxRateEditText.setVisibility(View.VISIBLE);
+                //Tax Rate TextView
+                selectTaxRateTextView = findViewById(R.id.selectTaxRateTextView);
+                selectTaxRateTextView.setVisibility(View.VISIBLE);
             }
 
         });
