@@ -67,12 +67,14 @@ public class MainMenu extends AppCompatActivity {
         month = month;
     }
 
-    private void saveTaxRate(float userTaxRate) {
-        getSharedPreferences("TaxRates", Context.MODE_PRIVATE)
-                .edit()
-                .putFloat(year, userTaxRate)
-                .apply();
+    private void saveTaxRate(String year, float userTaxRate) {
+        SharedPreferences sharedPref = getSharedPreferences("TaxRates", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putFloat(year, userTaxRate);
+        editor.apply();
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +98,11 @@ public class MainMenu extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
               //  Toast.makeText(MainMenu.this, "Please selected a year and a month ", Toast.LENGTH_SHORT).show();
+
+                String selectedYear = spinner.getSelectedItem().toString();
+                SharedPreferences sharedPref = getSharedPreferences("TaxRates", Context.MODE_PRIVATE);
+                float savedTaxRate = sharedPref.getFloat(selectedYear, (float) userTaxRate);
+                taxRateEditText.setText(String.valueOf(savedTaxRate));
             }
 
             @Override
@@ -104,7 +111,7 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
-        ArrayList<String> yearsList = new ArrayList<>();
+        ArrayList<String> yearsList = new ArrayList<>(); //initialized as a class level variable, needed for tax rate to link to year
         yearsList.add("2024");
         yearsList.add("2025");
         yearsList.add("2026");
@@ -158,15 +165,9 @@ public class MainMenu extends AppCompatActivity {
         // Initialize taxRateEditText
         taxRateEditText = findViewById(R.id.taxRateEditText);
 
-        // Retrieve the last saved tax rate from SharedPreferences
-/*
-        SharedPreferences sharedPref = getSharedPreferences("TaxRates", Context.MODE_PRIVATE);
-        float savedTaxRate = sharedPref.getFloat(year, (float) userTaxRate);
-*/
 
         // Set the tax rate EditText to the last saved tax rate
         taxRateEditText.setText(String.valueOf(savedTaxRate));
-
 
 
         binding.goButton.setOnClickListener(new View.OnClickListener() {
@@ -180,7 +181,6 @@ public class MainMenu extends AppCompatActivity {
         });
 
 
-
         binding.setTaxRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,7 +188,8 @@ public class MainMenu extends AppCompatActivity {
 
                 try {
                     userTaxRate = Double.parseDouble(userInput);
-                    saveTaxRate((float) userTaxRate);
+                    String selectedYear = spinner.getSelectedItem().toString();
+                    saveTaxRate(selectedYear, (float) userTaxRate);
                 }catch (NumberFormatException e){
                     Log.e(TAG, "Please enter a valid number");
                 }
