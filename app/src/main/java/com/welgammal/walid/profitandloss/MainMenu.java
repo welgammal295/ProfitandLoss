@@ -49,7 +49,7 @@ public class MainMenu extends AppCompatActivity {
     private TextView selectTaxRateTextView;
     private EditText taxRateEditText;
 
-    double userTaxRate = 0.0;
+    double userTaxRate = 8.85;
 
     public static String getYear() {
         return year;
@@ -65,6 +65,13 @@ public class MainMenu extends AppCompatActivity {
 
     public void setMonth(String month) {
         month = month;
+    }
+
+    private void saveTaxRate(float userTaxRate) {
+        getSharedPreferences("TaxRates", Context.MODE_PRIVATE)
+                .edit()
+                .putFloat(year, userTaxRate)
+                .apply();
     }
 
     @Override
@@ -144,6 +151,24 @@ public class MainMenu extends AppCompatActivity {
         /** Pass on year, month, and userId to Main activity
          *
          * */
+        //Checks if user entered a tax rate for x year
+        SharedPreferences sharedPref = getSharedPreferences("TaxRates", Context.MODE_PRIVATE);
+        float savedTaxRate = sharedPref.getFloat(year, (float) userTaxRate);
+
+        // Initialize taxRateEditText
+        taxRateEditText = findViewById(R.id.taxRateEditText);
+
+        // Retrieve the last saved tax rate from SharedPreferences
+/*
+        SharedPreferences sharedPref = getSharedPreferences("TaxRates", Context.MODE_PRIVATE);
+        float savedTaxRate = sharedPref.getFloat(year, (float) userTaxRate);
+*/
+
+        // Set the tax rate EditText to the last saved tax rate
+        taxRateEditText.setText(String.valueOf(savedTaxRate));
+
+
+
         binding.goButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,6 +188,7 @@ public class MainMenu extends AppCompatActivity {
 
                 try {
                     userTaxRate = Double.parseDouble(userInput);
+                    saveTaxRate((float) userTaxRate);
                 }catch (NumberFormatException e){
                     Log.e(TAG, "Please enter a valid number");
                 }
@@ -205,7 +231,7 @@ public class MainMenu extends AppCompatActivity {
                 taxRateButton = findViewById(R.id.setTaxRate);
                 taxRateButton.setVisibility(View.VISIBLE);
                 //Tax Rate EditText
-                taxRateEditText = findViewById(R.id.taxRateEditText);
+                /*taxRateEditText = findViewById(R.id.taxRateEditText);*/
                 taxRateEditText.setVisibility(View.VISIBLE);
                 //Tax Rate TextView
                 selectTaxRateTextView = findViewById(R.id.selectTaxRateTextView);
@@ -296,5 +322,6 @@ public class MainMenu extends AppCompatActivity {
             intent.putExtra(MAIN_MENU_ACTIVITY_USER_ID, userId);
             return intent;
         }
+
 
     }
