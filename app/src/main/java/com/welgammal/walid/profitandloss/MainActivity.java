@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
                         updateDisplay();
                     }
                 });
+
+        double userTaxRate = getIntent().getDoubleExtra("userTaxRate",0.0);
     }
 
     public static Intent mainActivityFactory(Context context, int loggedInUserId, String year, String month) {

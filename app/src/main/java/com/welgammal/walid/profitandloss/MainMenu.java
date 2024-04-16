@@ -45,9 +45,11 @@ public class MainMenu extends AppCompatActivity {
     static String month = "January";
     protected static int loggedInUserId = -1;
     private User user;
-    private Button taxRateButton;
+    public Button taxRateButton;
     private TextView selectTaxRateTextView;
     private EditText taxRateEditText;
+
+    double userTaxRate = 0.0;
 
     public static String getYear() {
         return year;
@@ -152,6 +154,25 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
+
+
+        binding.setTaxRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userInput = taxRateEditText.getText().toString();
+
+                try {
+                    userTaxRate = Double.parseDouble(userInput);
+                }catch (NumberFormatException e){
+                    Log.e(TAG, "Please enter a valid number");
+                }
+
+                Intent intent = MainActivity.mainActivityFactory(MainMenu.this, loggedInUserId, year, month);
+                intent.putExtra("userTaxRate", userTaxRate);
+                //startActivity(intent); // Starts MainActivity, only want to send tax rate
+            }
+        });
+
     }
 
 
@@ -193,6 +214,7 @@ public class MainMenu extends AppCompatActivity {
 
         });
     }
+
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState){
