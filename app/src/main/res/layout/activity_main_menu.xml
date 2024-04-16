@@ -62,7 +62,7 @@
         android:layout_width="213dp"
         android:layout_height="80dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="44dp"
         android:padding="8dp"
         android:text="@string/spinner_year"
         android:textColor="@color/light_orange"
@@ -88,12 +88,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/years" />
 
+
+    <EditText
+        android:id="@+id/taxRateEditText"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:hint="@string/enter_tax_rate"
+        android:inputType="numberDecimal"
+        android:padding="8dp"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:textSize="13sp"
+        tools:layout_editor_absoluteX="229dp"
+        tools:layout_editor_absoluteY="429dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/selectTaxRateTextView"
+        app:layout_constraintStart_toEndOf="@id/selectTaxRateTextView"/>
+
     <TextView
         android:id="@+id/selectMonthLabelTextView"
         android:layout_width="213dp"
         android:layout_height="80dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:padding="8dp"
         android:text="@string/spinner_month"
         android:textColor="@color/light_orange"
@@ -101,12 +116,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectYearLabelTextView" />
 
+    <TextView
+        android:id="@+id/selectTaxRateTextView"
+        android:layout_width="213dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:text="@string/spinner_taxRate"
+        android:textColor="@color/light_orange"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectMonthLabelTextView" />
 
     <Button
         android:id="@+id/setTaxRate"
         android:layout_width="180dp"
         android:layout_height="60dp"
-        android:layout_marginTop="40dip"
+        android:layout_marginTop="124dp"
         android:backgroundTint="@color/light_orange"
         android:gravity="center"
         android:shadowColor="@color/material_dynamic_secondary90"
@@ -115,6 +142,7 @@
         android:textSize="22sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/months"
         tools:visibility="visible" />
@@ -123,7 +151,7 @@
         android:id="@+id/goButton"
         android:layout_width="180dp"
         android:layout_height="60dp"
-        android:layout_marginTop="20dip"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/light_orange"
         android:gravity="center"
         android:shadowColor="@color/material_dynamic_secondary90"
@@ -131,9 +159,9 @@
         android:textColor="@color/black"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/setTaxRate"
- />
+        app:layout_constraintTop_toBottomOf="@id/setTaxRate" />
 
     />
 

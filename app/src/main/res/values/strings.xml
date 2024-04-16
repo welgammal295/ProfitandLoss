@@ -35,6 +35,8 @@
     <string name="signup">CREATE</string>
     <string name="new_password">Enter New Password</string>
     <string name="new_username">Enter New Username</string>
+    <string name="spinner_taxRate">Select a Tax Rate: </string>
+    <string name="enter_tax_rate">Enter Tax Rate</string>
     <string-array name="yearsList">
         <item>2024</item>
         <item>2025</item>
