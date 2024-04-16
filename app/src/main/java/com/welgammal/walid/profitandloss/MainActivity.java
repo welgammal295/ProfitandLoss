@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "DAC_PROFITLOSS";
     String mYear;
     String mMonth;
+    double userTaxRate = 0.0;
 
 
     @Override
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-        double userTaxRate = getIntent().getDoubleExtra("userTaxRate",0.0);
+        userTaxRate = getIntent().getDoubleExtra("userTaxRate",0.0);
     }
 
     public static Intent mainActivityFactory(Context context, int loggedInUserId, String year, String month) {
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         totalOperatingExpenses = Calculations.totalOperatingExpenses(mOperatingExpenses, mOtherExpenses);
         operatingIncome = Calculations.operatingIncome(mGrossProfit, totalOperatingExpenses);
 
-        return Calculations.netIncome(mOtherIncomes, operatingIncome);
+        return Calculations.netIncome(mOtherIncomes, operatingIncome, userTaxRate);
     }
 
     private double calculateGrossProfit() {

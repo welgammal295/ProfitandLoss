@@ -7,7 +7,7 @@ public class Calculations extends MainActivity{
      * Gross Profit: grossProfit = opeRevenue – costSales
      * */
     //TODO: We need to have the admin to adjust the tax rate
-    static double taxRate = 8.85;
+    //static double taxRate = 8.85;
     public static double grossProfit(double rev, double costSales){
 
         return  rev - costSales;
@@ -24,9 +24,9 @@ public class Calculations extends MainActivity{
     public static double operatingIncome(double grossProfit, double opExpenses) {
         return grossProfit - opExpenses;
     }
-    public static double netIncome(double otherIncome, double opIncome){
+    public static double netIncome(double otherIncome, double opIncome, double taxRate){
 
-        return  ((otherIncome + opIncome) - ((otherIncome + opIncome) * Calculations.taxRate / 100));
+        return  ((otherIncome + opIncome) - ((otherIncome + opIncome) * taxRate / 100));
     }
 
 

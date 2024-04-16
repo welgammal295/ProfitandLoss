@@ -169,7 +169,7 @@ public class MainMenu extends AppCompatActivity {
 
                 Intent intent = MainActivity.mainActivityFactory(MainMenu.this, loggedInUserId, year, month);
                 intent.putExtra("userTaxRate", userTaxRate);
-                //startActivity(intent); // Starts MainActivity, only want to send tax rate
+                startActivity(intent); // Starts MainActivity, only want to send tax rate
             }
         });
 
