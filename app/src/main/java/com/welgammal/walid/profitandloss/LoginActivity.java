@@ -1,24 +1,27 @@
 package com.welgammal.walid.profitandloss;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-
+import com.welgammal.walid.profitandloss.database.ProfitLossRepository;
+import com.welgammal.walid.profitandloss.database.entities.User;
+import com.welgammal.walid.profitandloss.database.ui.UserSignup;
 import com.welgammal.walid.profitandloss.databinding.ActivityLoginBinding;
+
+import java.security.PrivateKey;
 
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
-    private EditText usernameEditText;
-    private EditText passwordEditText;
-    private SharedPreferences sharedPreferences;
+
+    private ProfitLossRepository repository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,39 +30,53 @@ public class LoginActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        // Initialize SharedPreferences
-        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        repository = ProfitLossRepository.getRepository(getApplication());
+        binding.createAccountLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = UserSignup.userSignFactory(getApplicationContext());
 
-        usernameEditText = findViewById(R.id.userNameLoginEditText);
-        passwordEditText = findViewById(R.id.passwordLoginEditText);
-        Button loginButton = findViewById(R.id.loginButton);
-
-        binding.loginButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            //variables to save values
-            String username = usernameEditText.getText().toString();
-            String password = passwordEditText.getText().toString();
-
-            // Retrieve stored values
-            String storedUsername = sharedPreferences.getString("username", "");
-            String storedPassword = sharedPreferences.getString("password", "");
-
-            // Check if entered values match stored values
-            if (username.equals(storedUsername) && password.equals(storedPassword)) {
-                // Login successful, navigate to main menu
-                Intent intent = MainMenu.mainMenuFactory(LoginActivity.this, 0);
                 startActivity(intent);
-                finish();
-            } else {
-                // Login failed, display error message
-                Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
             }
-        }
-    });
-}
+        });
+        binding.loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              verifyUser();
+            }
+        });
+    }
 
-    static Intent loginIntentFactory(Context context) {
+    private void verifyUser() {
+        String username = binding.userNameLoginEditText.getText().toString();
+        if (username.isEmpty()) {
+            toastMaker("Username may not be blank.");
+            return;
+        }
+        LiveData<User> userObserver = repository.getUserByUserName(username);
+        userObserver.observe(this, user -> {
+            if (user != null){
+                String password = binding.passwordLoginEditText.getText().toString();
+                if (password.equals(user.getPassword())) {
+                    startActivity(MainMenu.mainMenuFactory(getApplicationContext(), user.getId()));
+                }else {
+                    toastMaker("Invalid password");
+                    binding.passwordLoginEditText.setSelection(0);
+                }
+            }else {
+                toastMaker(String.format("No user %s is not a valid username", username));
+                binding.userNameLoginEditText.setSelection(0);
+            }
+
+        });
+    }
+
+    private void toastMaker(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+
+    public static Intent loginIntentFactory(Context context) {
         return new Intent(context, LoginActivity.class);
 
     }

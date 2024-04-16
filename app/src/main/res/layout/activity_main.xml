@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/instructionDisplayTextView"
         android:layout_width="383dp"
-        android:layout_height="100dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dip"
         android:padding="8dp"
@@ -24,7 +24,7 @@
     <TextView
         android:id="@+id/revenueLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:padding="8dp"
         android:text="@string/revenue"
@@ -36,10 +36,10 @@
     <EditText
         android:id="@+id/revenueInputEditText"
         android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:hint="@string/enter_monthly_revenue"
-        android:textSize="14sp"
+        android:textSize="13sp"
         android:textColor="@color/material_dynamic_neutral90"
         android:inputType="numberDecimal"
         android:padding="8dp"
@@ -50,7 +50,7 @@
     <TextView
         android:id="@+id/costOfSalesLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:padding="8dp"
         android:text="@string/costfsales"
@@ -62,7 +62,7 @@
     <EditText
         android:id="@+id/costOfSalesInputEditText"
         android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:hint="@string/enter_cost_of_sales"
         android:textSize="14sp"
@@ -78,7 +78,7 @@
     <TextView
         android:id="@+id/operatingExpensesLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:padding="8dp"
         android:text="@string/operating_expenses"
@@ -90,7 +90,7 @@
     <EditText
         android:id="@+id/operatingExpensesInputEditText"
         android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:hint="@string/enter_operating_expenses"
         android:textSize="14sp"
@@ -104,7 +104,7 @@
     <TextView
         android:id="@+id/otherExpensesLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:padding="8dp"
         android:text="@string/other_expenses"
@@ -116,7 +116,7 @@
     <EditText
         android:id="@+id/otherExpensesInputEditText"
         android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:hint="@string/enter_other_expenses"
         android:textSize="14sp"
@@ -130,7 +130,7 @@
     <TextView
         android:id="@+id/otherIncomesLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:padding="8dp"
         android:text="@string/other_incomes"
@@ -142,7 +142,7 @@
     <EditText
         android:id="@+id/otherIncomesInputEditText"
         android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_marginStart="8dp"
         android:hint="@string/enter_other_incomes"
         android:textSize="14sp"
@@ -152,43 +152,72 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/otherIncomesLabelTextView"
         app:layout_constraintStart_toEndOf="@id/otherIncomesLabelTextView"
         android:autofillHints="" />
+
     <TextView
-        android:id="@+id/netIncomesLabelTextView"
+        android:id="@+id/grossProfitLabelTextView"
         android:layout_width="213dp"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dip"
         android:layout_marginStart="16dp"
         android:padding="8dp"
-        android:text="@string/net_income"
+        android:text="@string/gross_profit"
         android:textColor="@color/blue"
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/otherIncomesLabelTextView" />
 
     <TextView
-        android:id="@+id/netIncomesOnputTextView"
+        android:id="@+id/grossProfitOutputTextView"
         android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:textSize="22sp"
+        tools:text="$0.00"
+        android:textColor="@color/cardview_light_background"
+        android:padding="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/grossProfitLabelTextView"
+        app:layout_constraintStart_toEndOf="@id/grossProfitLabelTextView"
+        />
+
+    <TextView
+        android:id="@+id/netIncomesLabelTextView"
+        android:layout_width="213dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dip"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:text="@string/net_income"
+        android:textColor="@color/blue"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grossProfitLabelTextView" />
+
+    <TextView
+        android:id="@+id/netIncomesOutputTextView"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dip"
         android:layout_marginStart="8dp"
         android:textSize="22sp"
         tools:text="$0.00"
         android:textColor="@color/cardview_light_background"
         android:padding="8dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/netIncomesLabelTextView"
-        app:layout_constraintStart_toEndOf="@id/netIncomesLabelTextView"
+        app:layout_constraintStart_toEndOf="@id/grossProfitLabelTextView"
         />
 
     <Button
         android:id="@+id/netIncomeButton"
         android:layout_width="180dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="@color/light_orange"
         android:gravity="center"
         android:onClick="netIncome"
         android:shadowColor="@color/material_dynamic_secondary90"
-        android:text="@string/net_income"
+        android:text="@string/income_review"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="19sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/netIncomesLabelTextView" />
@@ -196,13 +225,13 @@
     <Button
         android:id="@+id/mainMenuButton"
         android:layout_width="180dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:shadowColor="@color/material_dynamic_secondary90"
         android:text="@string/main_menu"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:backgroundTint="@color/light_orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

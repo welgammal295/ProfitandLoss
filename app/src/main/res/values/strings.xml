@@ -13,21 +13,28 @@
     <string name="other_incomes">Other Incomes</string>
     <string name="enter_other_incomes">Enter Other Incomes</string>
     <string name="net_income">Net Income</string>
+    <string name="income_review">Income Review</string>
     <string name="main_menu">Main Menu</string>
     <string name="net_income_value">%1$.2f</string>
-    <string name="welcome">Welcome @users!</string>
+    <string name="welcome">Welcome </string>
     <string name="go">Go!</string>
-    <string name="spinner_year">Select a year: </string>
-    <string name="spinner_month">Select a month: </string>
-    <string name="user_message">"Please select a year and a month "</string>
+    <string name="spinner_year">Select a Year: </string>
+    <string name="spinner_month">Select a Month: </string>
+    <string name="user_message">"Please Select a Year and a Month "</string>
     <string name="login_msg"><![CDATA[Welcome to the S.W. P&L\nPlease Sign in.]]></string>
-    <string name="user_creation_msg"><![CDATA[Create Account]]></string>
     <string name="username">Username</string>
     <string name="password">password</string>
     <string name="Login">Login</string>
-    <string name="continueUser">Continue</string>
-    <string name="lfoot_msg">Measure your business\'s sucess</string>
-    <string name="logout">Logout</string>
+    <string name="lfoot_msg">Measure your business\'s success</string>
+    <string name="gross_profit">Gross Profit</string>
+    <string name="sharedprefrence_file_key">welgammalPreferenceFileNamePL</string>
+    <string name="preference_userId_key">welgammalPreferenceUserIdPLKey</string>
+    <string name="setTaxRate">Set Tax Rate!</string>
+    <string name="create_account_msg">Create Account</string>
+    <string name="new_account_msg">New to S.W. Finance? Sign up Here!</string>
+    <string name="signup">CREATE</string>
+    <string name="new_password">Enter New Password</string>
+    <string name="new_username">Enter New Username</string>
     <string-array name="yearsList">
         <item>2024</item>
         <item>2025</item>

@@ -3,6 +3,9 @@ package com.welgammal.walid.profitandloss.database;
 import android.app.Application;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+
+import com.welgammal.walid.profitandloss.MainMenu;
 import com.welgammal.walid.profitandloss.database.entities.Elements;
 import com.welgammal.walid.profitandloss.MainActivity;
 import com.welgammal.walid.profitandloss.database.entities.User;
@@ -75,10 +78,18 @@ public class ProfitLossRepository {
         });
     }
 
-    public void insertUser(User...user) {
+
+    public void insertUserRecord(User...user) {
         ProfitLossDB.databaseWriteExecutor.execute(() ->
         {
             userDAO.insert(user);
         });
     }
+    public LiveData<User> getUserByUserName(String username) {
+                        return userDAO.getUserByUserName(username);
+                    }
+    public LiveData<User> getUserByUserId(int userId) {
+        return userDAO.getUserByUserId(userId);
+    }
+
 }
