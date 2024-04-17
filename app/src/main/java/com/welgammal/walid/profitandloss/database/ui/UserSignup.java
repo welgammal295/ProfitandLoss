@@ -57,14 +57,24 @@ public class UserSignup extends AppCompatActivity {
     /** Insert records in database */
     private void insertUserRecord(){
         getUserRecord();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please enter both a valid username and password", Toast.LENGTH_LONG).show();
+            return; // Exit the method without creating the user record
+        }
+
         User user = new User(username, password);
+        repository.insertUserRecord(user);
+
+        //Past code
+/*        User user = new User(username, password);
         if (username == null || password == null){
             Toast.makeText(getApplicationContext(), " Please enter a username and password", Toast.LENGTH_LONG).show();
         }
         else {
             repository.insertUserRecord(user);
 
-        }
+        }*/
 
 
     }
@@ -72,12 +82,12 @@ public class UserSignup extends AppCompatActivity {
     private void getUserRecord() {
 
         try {
-            username =binding.createUserNameEditText.getText().toString();
+            username =binding.createUserNameEditText.getText().toString().trim();;
         }catch(NumberFormatException e){
             Log.d(TAG, "Error reading value from username text. ");
         }
             try {
-                password =binding.createPasswordEditText.getText().toString();
+                password =binding.createPasswordEditText.getText().toString().trim();;
             }catch(NumberFormatException e){
                 Log.d(TAG, "Error reading value from password text. ");
             }
