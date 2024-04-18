@@ -110,7 +110,7 @@
         app:layout_constraintStart_toStartOf="@+id/reportButton"
         app:layout_constraintTop_toTopOf="@+id/reportButton"
         app:layout_constraintVertical_bias="0.505"
-        app:srcCompat="@drawable/Report"
+        app:srcCompat="@drawable/report"
         android:contentDescription="@string/icon_description"/>
 
     <ImageView
@@ -123,7 +123,7 @@
         app:layout_constraintStart_toStartOf="@+id/ProfitCalcButton"
         app:layout_constraintTop_toTopOf="@+id/ProfitCalcButton"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/Calculate"
+        app:srcCompat="@drawable/calculate"
         android:contentDescription="@string/icon_description"/>
 
     <ImageView
@@ -145,7 +145,7 @@
         app:layout_constraintEnd_toEndOf="@+id/accountsButton"
         app:layout_constraintStart_toStartOf="@+id/accountsButton"
         app:layout_constraintTop_toTopOf="@+id/accountsButton"
-        app:srcCompat="@drawable/Accounts"
+        app:srcCompat="@drawable/accounts"
         android:contentDescription="@string/icon_description"/>
 
     <TextView

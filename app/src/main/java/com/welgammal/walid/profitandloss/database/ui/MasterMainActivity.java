@@ -1,5 +1,6 @@
 package com.welgammal.walid.profitandloss.database.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -18,6 +19,13 @@ import com.welgammal.walid.profitandloss.R;
 import com.welgammal.walid.profitandloss.ReportActivity;
 
 public class MasterMainActivity extends AppCompatActivity implements View.OnClickListener{
+
+
+    public static Intent masterMenuFactory(Context context, int userId){
+        Intent intent = new Intent(context, MainMenu.class);
+        //intent.putExtra(MASTER_MENU_ACTIVITY_USER_ID, userId);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
