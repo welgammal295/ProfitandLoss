@@ -11,8 +11,11 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
+import com.welgammal.walid.profitandloss.AccountsActivity;
+import com.welgammal.walid.profitandloss.Calc.ExchangeActivity;
 import com.welgammal.walid.profitandloss.MainMenu;
 import com.welgammal.walid.profitandloss.R;
+import com.welgammal.walid.profitandloss.ReportActivity;
 
 public class MasterMainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -32,25 +35,19 @@ public class MasterMainActivity extends AppCompatActivity implements View.OnClic
         profitCalcButton.setOnClickListener((View.OnClickListener) this);
     }
 
-    //TODO: Link up activities to buttons
     @Override
     public void onClick(View v) {
         Intent intent;
-        switch (v.getId()) {
-            case R.id.accountsButton:
-                intent = new Intent(this, AccountsActivity.class); // Change to AccountsActivity class
-                break;
-            case R.id.reportButton:
-                intent = new Intent(this, ReportActivity.class); // Change to ReportActivity class
-                break;
-            case R.id.exchangeButton:
-                intent = new Intent(this, ExchangeActivity.class); // Change to ExchangeActivity class
-                break;
-            case R.id.ProfitCalcButton:
-                intent = new Intent(this, MainMenu.class);
-                break;
-            default:
-                return;
+        if (v.getId() == R.id.accountsButton) {
+            intent = new Intent(this, AccountsActivity.class);
+        } else if (v.getId() == R.id.reportButton) {
+            intent = new Intent(this, ReportActivity.class);
+        } else if (v.getId() == R.id.exchangeButton) {
+            intent = new Intent(this, ExchangeActivity.class);
+        } else if (v.getId() == R.id.ProfitCalcButton) {
+            intent = new Intent(this, MainMenu.class);
+        } else {
+            return;
         }
         startActivity(intent);
     }
