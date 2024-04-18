@@ -11,16 +11,38 @@
         android:id="@+id/backgroundImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="@string/background_image_description"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/white_hill_background"
-        android:contentDescription="@string/background_image_description"/>
+        app:srcCompat="@drawable/white_hill_background" />
+
+    <Button
+        android:id="@+id/reportButton"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="508dp"
+        android:autoSizeTextType="none"
+        android:includeFontPadding="false"
+        android:paddingLeft="70dp"
+        android:shadowColor="#2B2929"
+        android:text="@string/report_button_text"
+        android:textColor="@color/black"
+        android:textColorLink="@color/black"
+        android:textSize="16sp"
+        android:typeface="sans"
+        app:backgroundTint="@color/light_orange"
+        app:cornerRadius="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/loanButton"
+        app:layout_constraintEnd_toEndOf="@+id/loanButton"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/ProfitCalcButton"
-        android:layout_width="210dp"
-        android:layout_height="100dp"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
         android:layout_marginStart="20dp"
         android:autoSizeTextType="none"
         android:includeFontPadding="false"
@@ -29,7 +51,7 @@
         android:text="@string/profit_calc_button_text"
         android:textColor="@color/black"
         android:textColorLink="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:typeface="sans"
         app:backgroundTint="@color/light_orange"
         app:cornerRadius="18dp"
@@ -39,33 +61,11 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="VisualLintOverlap" />
 
-    <Button
-        android:id="@+id/reportButton"
-        android:layout_width="210dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="608dp"
-        android:autoSizeTextType="none"
-        android:includeFontPadding="false"
-        android:paddingLeft="70dp"
-        android:shadowColor="#2B2929"
-        android:text="@string/report_button_text"
-        android:textColor="@color/black"
-        android:textColorLink="@color/black"
-        android:textSize="20sp"
-        android:typeface="sans"
-        app:backgroundTint="@color/light_orange"
-        app:cornerRadius="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/loanButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
-        app:layout_constraintStart_toEndOf="@id/ProfitCalcButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.521" />
 
     <Button
         android:id="@+id/exchangeButton"
-        android:layout_width="210dp"
-        android:layout_height="100dp"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
         android:autoSizeTextType="none"
         android:includeFontPadding="false"
         android:paddingLeft="70dp"
@@ -73,21 +73,21 @@
         android:text="@string/exchange_button_text"
         android:textColor="@color/black"
         android:textColorLink="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:typeface="sans"
         app:backgroundTint="@color/light_orange"
         app:cornerRadius="18dp"
         app:layout_constraintBottom_toBottomOf="@+id/loanButton"
-        app:layout_constraintEnd_toStartOf="@+id/loanButton"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ProfitCalcButton"
         app:layout_constraintTop_toTopOf="@+id/loanButton"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/loanButton"
-        android:layout_width="210dp"
-        android:layout_height="100dp"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:autoSizeTextType="none"
         android:includeFontPadding="false"
         android:paddingLeft="70dp"
@@ -95,16 +95,14 @@
         android:text="@string/loan_button_text"
         android:textColor="@color/black"
         android:textColorLink="@color/black"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:typeface="sans"
         app:backgroundTint="@color/light_orange"
         app:cornerRadius="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.978"
+        app:layout_constraintTop_toBottomOf="@id/reportButton"
         tools:ignore="VisualLintOverlap" />
-
 
     <ImageView
         android:id="@+id/currencyImageView"

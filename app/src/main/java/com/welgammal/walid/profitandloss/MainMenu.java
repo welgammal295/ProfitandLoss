@@ -32,7 +32,7 @@ import com.welgammal.walid.profitandloss.databinding.ActivityMainMenuBinding;
 import java.util.ArrayList;
 
 public class MainMenu extends AppCompatActivity {
-    private static final String MAIN_MENU_ACTIVITY_USER_ID = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_USER_ID" ;
+    public static final String MAIN_MENU_ACTIVITY_USER_ID = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_USER_ID" ;
     private static final String MAIN_MENU_ACTIVITY_YEAR = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_YEAR" ;
     private static final String MAIN_MENU_ACTIVITY_MONTH = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_MONTH" ;
     static final String SHARED_PREFERENCE_USERID_KEY = "com.welgammal.walid.profitandloss.SHARED_PREFERENCE_USERID_KEY" ;
@@ -43,7 +43,7 @@ public class MainMenu extends AppCompatActivity {
     public ProfitLossRepository repository;
     static String year = "2024";
     static String month = "January";
-    protected static int loggedInUserId = -1;
+    public static int loggedInUserId = -1;
     private User user;
     public Button taxRateButton;
     private TextView selectTaxRateTextView;
@@ -217,6 +217,8 @@ public class MainMenu extends AppCompatActivity {
             loggedInUserId = getIntent().getIntExtra(MAIN_MENU_ACTIVITY_USER_ID, LOGGED_OUT);
         }
         if (loggedInUserId == LOGGED_OUT) {
+            startActivity(LoginActivity.loginIntentFactory(getApplicationContext()));
+            finish();
             return;
         }
 
@@ -226,7 +228,7 @@ public class MainMenu extends AppCompatActivity {
             if (this.user != null) {
                 invalidateOptionsMenu();
             }
-            if (this.user.isAdmin()){
+            if (this.user != null && this.user.isAdmin()) {
                 invalidateOptionsMenu();
                 //Tax Rate Button
                 taxRateButton = findViewById(R.id.setTaxRate);
@@ -270,7 +272,6 @@ public class MainMenu extends AppCompatActivity {
         item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(@NonNull MenuItem item) {
-
                 showLogoutDialog();
                 return false;
             }
@@ -318,7 +319,7 @@ public class MainMenu extends AppCompatActivity {
 
     }
 
-        static Intent mainMenuFactory (Context context,int userId){
+        public static Intent mainMenuFactory (Context context,int userId){
             Intent intent = new Intent(context, MainMenu.class);
             intent.putExtra(MAIN_MENU_ACTIVITY_USER_ID, userId);
             return intent;
