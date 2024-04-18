@@ -263,6 +263,37 @@ public class MainMenu extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem item = menu.findItem(R.id.userMessageDisplayTextView);
+        item.setVisible(true);
+
+        if (user != null) {
+            item.setTitle(user.getUsername());
+            item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(@NonNull MenuItem item) {
+                    showLogoutDialog();
+                    return false;
+                }
+            });
+        } else {
+            // User is not logged in, handle it accordingly
+            item.setTitle("Not logged in");
+            item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(@NonNull MenuItem item) {
+                    // Handle the action when the user is not logged in
+                    // For example, redirect to the login page
+                    Intent intent = new Intent(MainMenu.this, LoginActivity.class);
+                    startActivity(intent);
+                    return false;
+                }
+            });
+        }
+
+        return true;
+    }
+/*    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem item = menu.findItem(R.id.logoutMenuItem);
         item.setVisible(true);
         if (user == null) {
@@ -278,8 +309,8 @@ public class MainMenu extends AppCompatActivity {
         });
 
         return true;
-    }
-    private void showLogoutDialog(){
+    }*/
+    /*private void showLogoutDialog(){
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainMenu.this);
         final AlertDialog alertDialog = alertBuilder.create();
 
@@ -298,10 +329,64 @@ public class MainMenu extends AppCompatActivity {
         });
 
         alertBuilder.create().show();
+    }*/
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.logoutMenuItem) {
+            showLogoutDialog();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
-    private void logout() {
+    private void showLogoutDialog() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainMenu.this);
+                alertBuilder.setMessage("Are you sure you want to log out?");
+                alertBuilder.setPositiveButton("Log out", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        logout();
+                    }
+                });
+                alertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss(); // Dismiss the dialog when Cancel is clicked
+                    }
+                });
+                // Create the dialog and prevent it from automatically closing
+                AlertDialog alertDialog = alertBuilder.create();
+                alertDialog.setCanceledOnTouchOutside(false);
+                alertDialog.setCancelable(false);
+                alertDialog.show();
+            }
+        });
+    }
 
+/*    private void showLogoutDialog() {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainMenu.this);
+        alertBuilder.setMessage("Are you sure you want to log out?");
+        alertBuilder.setPositiveButton("Log out", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                logout();
+            }
+        });
+        alertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Dismiss the dialog if the user cancels
+                dialog.dismiss();
+            }
+        });
+        alertBuilder.create().show();
+    }*/
+
+    private void logout() {
         loggedInUserId = LOGGED_OUT;
         updateSharedPreference();
         getIntent().putExtra(MAIN_MENU_ACTIVITY_USER_ID, LOGGED_OUT);
