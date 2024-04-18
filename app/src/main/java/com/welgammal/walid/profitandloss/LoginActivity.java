@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.welgammal.walid.profitandloss.database.ProfitLossRepository;
 import com.welgammal.walid.profitandloss.database.entities.User;
-import com.welgammal.walid.profitandloss.database.ui.MasterMainActivity;
 import com.welgammal.walid.profitandloss.database.ui.UserSignup;
 import com.welgammal.walid.profitandloss.databinding.ActivityLoginBinding;
 
@@ -43,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              verifyUser();
+                verifyUser();
             }
         });
     }
@@ -59,15 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             if (user != null){
                 String password = binding.passwordLoginEditText.getText().toString();
                 if (password.equals(user.getPassword())) {
-                    /*//startActivity(MainMenu.mainMenuFactory(getApplicationContext(), user.getId()));
-                    startActivity(new Intent(this, MasterMainActivity.class));*/
-
-                    // Start MasterMainActivity
-                    Intent masterIntent = new Intent(this, MasterMainActivity.class);
-                    masterIntent.putExtra("userId", user.getId());
-                    startActivity(masterIntent);
-
-
+                    startActivity(MainMenu.mainMenuFactory(getApplicationContext(), user.getId()));
                 }else {
                     toastMaker("Invalid password");
                     binding.passwordLoginEditText.setSelection(0);

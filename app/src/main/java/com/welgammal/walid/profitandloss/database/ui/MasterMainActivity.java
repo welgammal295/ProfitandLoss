@@ -1,6 +1,6 @@
 package com.welgammal.walid.profitandloss.database.ui;
 
-import static com.welgammal.walid.profitandloss.MainMenu.loggedInUserId;
+
 
 import android.content.Context;
 import android.os.Bundle;
