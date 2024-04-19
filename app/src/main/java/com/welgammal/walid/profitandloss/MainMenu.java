@@ -25,13 +25,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.welgammal.walid.profitandloss.Calc.ExchangeActivity;
 import com.welgammal.walid.profitandloss.database.ProfitLossRepository;
 import com.welgammal.walid.profitandloss.database.entities.User;
 import com.welgammal.walid.profitandloss.databinding.ActivityMainMenuBinding;
 
 import java.util.ArrayList;
 
-public class MainMenu extends AppCompatActivity {
+public class MainMenu extends AppCompatActivity implements View.OnClickListener {
     private static final String MAIN_MENU_ACTIVITY_USER_ID = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_USER_ID" ;
     private static final String MAIN_MENU_ACTIVITY_YEAR = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_YEAR" ;
     private static final String MAIN_MENU_ACTIVITY_MONTH = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_MONTH" ;
@@ -92,6 +93,19 @@ public class MainMenu extends AppCompatActivity {
             startActivity(intent);
         }
         updateSharedPreference();
+
+
+        // Find buttons
+        Button accountsButton = findViewById(R.id.loanButton);
+        Button reportButton = findViewById(R.id.reportButton);
+        Button exchangeButton = findViewById(R.id.exchangeButton);
+        Button discountButton = findViewById(R.id.discountButton);
+
+        // Set click listeners
+        accountsButton.setOnClickListener(this);
+        reportButton.setOnClickListener(this);
+        exchangeButton.setOnClickListener(this);
+        discountButton.setOnClickListener(this);
 
         Spinner spinner = findViewById(R.id.years);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -202,6 +216,21 @@ public class MainMenu extends AppCompatActivity {
 
     }
 
+    public void onClick(View v) {
+        Intent intent;
+        if (v.getId() == R.id.loanButton) {
+            intent = new Intent(this, LoanActivity.class);
+        } else if (v.getId() == R.id.reportButton) {
+            intent = new Intent(this, ReportActivity.class);
+        } else if (v.getId() == R.id.exchangeButton) {
+            intent = new Intent(this, ExchangeActivity.class);
+        } else if (v.getId() == R.id.discountButton) {
+            intent = new Intent(this, ExchangeActivity.class); // Assuming DiscountActivity is the correct activity
+        } else {
+            return;
+        }
+        startActivity(intent);
+    }
 
     private void loginUser(Bundle savedInstanceState) {
         // check shared preference for logged in user
@@ -325,4 +354,8 @@ public class MainMenu extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
+    }
 }

@@ -9,26 +9,26 @@
 
     <TextView
         android:id="@+id/welcomeDisplayTextView"
-        android:layout_width="383dp"
-        android:layout_height="100dp"
+        android:layout_width="183dp"
+        android:layout_height="64dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dip"
-        android:padding="8dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
+        android:padding="8dp"
         android:text="@string/welcome"
         android:textColor="@color/blue"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/userMessageDisplayTextView"
         android:layout_width="383dp"
-        android:layout_height="100dp"
+        android:layout_height="65dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="256dp"
         android:gravity="center"
         android:padding="8dp"
         android:text="@string/user_message"
@@ -39,11 +39,82 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/welcomeDisplayTextView" />
 
+    <TextView
+        android:id="@+id/selectMonthLabelTextView"
+        android:layout_width="213dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:text="@string/spinner_month"
+        android:textColor="@color/light_orange"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectYearLabelTextView" />
+
+    <TextView
+        android:id="@+id/selectYearLabelTextView"
+        android:layout_width="213dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:text="@string/spinner_year"
+        android:textColor="@color/light_orange"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userMessageDisplayTextView" />
+
+    <TextView
+        android:id="@+id/selectTaxRateTextView"
+        android:layout_width="213dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:text="@string/spinner_taxRate"
+        android:textColor="@color/light_orange"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectMonthLabelTextView"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/taxRateEditText"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="4dp"
+        android:hint="@string/enter_tax_rate"
+        android:inputType="numberDecimal"
+        android:padding="8dp"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:textSize="13sp"
+        android:visibility="invisible"
+        app:layout_constraintBaseline_toBaselineOf="@+id/selectTaxRateTextView"
+        app:layout_constraintStart_toEndOf="@id/selectTaxRateTextView"
+        tools:visibility="visible" />
+
+    <Spinner
+        android:id="@+id/months"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:minHeight="48dp"
+        android:padding="8dp"
+        android:prompt="@string/spinner_month"
+        android:spinnerMode="dropdown"
+        android:textAlignment="viewStart"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/selectMonthLabelTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/years" />
+
     <Spinner
         android:id="@+id/years"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="12dp"
         android:minHeight="48dp"
         android:padding="8dp"
         android:prompt="@string/spinner_year"
@@ -57,87 +128,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userMessageDisplayTextView" />
 
-    <TextView
-        android:id="@+id/selectYearLabelTextView"
-        android:layout_width="213dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
-        android:padding="8dp"
-        android:text="@string/spinner_year"
-        android:textColor="@color/light_orange"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userMessageDisplayTextView" />
-
-    <Spinner
-        android:id="@+id/months"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
-        android:minHeight="48dp"
-        android:padding="8dp"
-        android:prompt="@string/spinner_month"
-        android:spinnerMode="dropdown"
-        android:textAlignment="viewStart"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/selectMonthLabelTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.781"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/years" />
-
-
-    <EditText
-        android:id="@+id/taxRateEditText"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:hint="@string/enter_tax_rate"
-        android:inputType="numberDecimal"
-        android:padding="8dp"
-        android:textColor="@color/material_dynamic_neutral90"
-        android:textSize="13sp"
-        tools:layout_editor_absoluteX="229dp"
-        tools:layout_editor_absoluteY="429dp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/selectTaxRateTextView"
-        app:layout_constraintStart_toEndOf="@id/selectTaxRateTextView"
-        android:visibility="invisible"
-        tools:visibility="visible"/>
-
-    <TextView
-        android:id="@+id/selectMonthLabelTextView"
-        android:layout_width="213dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:padding="8dp"
-        android:text="@string/spinner_month"
-        android:textColor="@color/light_orange"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectYearLabelTextView" />
-
-    <TextView
-        android:id="@+id/selectTaxRateTextView"
-        android:layout_width="213dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:padding="8dp"
-        android:text="@string/spinner_taxRate"
-        android:textColor="@color/light_orange"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectMonthLabelTextView"
-        android:visibility="invisible"
-        tools:visibility="visible"/>
 
     <Button
         android:id="@+id/setTaxRate"
         android:layout_width="180dp"
         android:layout_height="60dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="@color/light_orange"
         android:gravity="center"
         android:shadowColor="@color/material_dynamic_secondary90"
@@ -146,16 +142,15 @@
         android:textSize="22sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/taxRateEditText"
+        app:layout_constraintTop_toBottomOf="@+id/selectTaxRateTextView"
         tools:visibility="visible" />
 
     <Button
         android:id="@+id/goButton"
         android:layout_width="180dp"
         android:layout_height="60dp"
-        android:layout_marginTop="20dp"
         android:backgroundTint="@color/light_orange"
         android:gravity="center"
         android:shadowColor="@color/material_dynamic_secondary90"
@@ -163,11 +158,146 @@
         android:textColor="@color/black"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/setTaxRate" />
+        app:layout_constraintStart_toEndOf="@+id/setTaxRate"
+        app:layout_constraintTop_toTopOf="@+id/setTaxRate" />
 
-    />
+
+    <Button
+        android:id="@+id/reportButton"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:autoSizeTextType="none"
+        android:includeFontPadding="false"
+        android:paddingLeft="70dp"
+        android:shadowColor="#2B2929"
+        android:text="@string/report_button_text"
+        android:textColor="@color/black"
+        android:textColorLink="@color/black"
+        android:textSize="16sp"
+        android:typeface="sans"
+        app:backgroundTint="@color/light_orange"
+        app:cornerRadius="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/exchangeButton"
+        app:layout_constraintEnd_toStartOf="@+id/exchangeButton"
+        app:layout_constraintHorizontal_bias="0.309"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/exchangeButton"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/loanButton"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="12dp"
+        android:autoSizeTextType="none"
+        android:includeFontPadding="false"
+        android:paddingLeft="70dp"
+        android:shadowColor="#2B2929"
+        android:text="@string/loan_button_text"
+        android:textColor="@color/black"
+        android:textColorLink="@color/black"
+        android:textSize="16sp"
+        android:typeface="sans"
+        app:backgroundTint="@color/light_orange"
+        app:cornerRadius="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/userMessageDisplayTextView"
+        app:layout_constraintEnd_toEndOf="@+id/exchangeButton"
+        app:layout_constraintHorizontal_bias="0.985"
+        app:layout_constraintStart_toStartOf="@+id/exchangeButton"
+        tools:ignore="VisualLintOverlap" />
+
+    <Button
+        android:id="@+id/exchangeButton"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="20dp"
+        android:autoSizeTextType="none"
+        android:includeFontPadding="false"
+        android:paddingLeft="70dp"
+        android:shadowColor="#2B2929"
+        android:text="@string/exchange_button_text"
+        android:textColor="@color/black"
+        android:textColorLink="@color/black"
+        android:textSize="16sp"
+        android:typeface="sans"
+        app:backgroundTint="@color/light_orange"
+        app:cornerRadius="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeDisplayTextView" />
+
+    <Button
+        android:id="@+id/discountButton"
+        android:layout_width="170dp"
+        android:layout_height="80dp"
+        android:autoSizeTextType="none"
+        android:includeFontPadding="false"
+        android:paddingLeft="70dp"
+        android:shadowColor="#2B2929"
+        android:text="@string/discount_button_text"
+        android:textColor="@color/black"
+        android:textColorLink="@color/black"
+        android:textSize="16sp"
+        android:typeface="sans"
+        app:backgroundTint="@color/light_orange"
+        app:cornerRadius="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/loanButton"
+        app:layout_constraintEnd_toEndOf="@+id/reportButton"
+        app:layout_constraintStart_toStartOf="@+id/reportButton"
+        tools:ignore="VisualLintOverlap" />
+
+    <ImageView
+        android:id="@+id/currencyImageView"
+        android:layout_width="64dp"
+        android:layout_height="61dp"
+        android:contentDescription="@string/icon_description"
+        app:layout_constraintBottom_toBottomOf="@+id/exchangeButton"
+        app:layout_constraintEnd_toEndOf="@+id/exchangeButton"
+        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintStart_toStartOf="@+id/exchangeButton"
+        app:layout_constraintTop_toTopOf="@+id/exchangeButton"
+        app:layout_constraintVertical_bias="0.538"
+        app:srcCompat="@drawable/exchange" />
+
+    <ImageView
+        android:id="@+id/loanImageView"
+        android:layout_width="59dp"
+        android:layout_height="83dp"
+        android:contentDescription="@string/icon_description"
+        app:layout_constraintBottom_toBottomOf="@+id/loanButton"
+        app:layout_constraintEnd_toEndOf="@+id/loanButton"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="@+id/loanButton"
+        app:layout_constraintTop_toTopOf="@+id/loanButton"
+        app:layout_constraintVertical_bias="0.411"
+        app:srcCompat="@drawable/loan" />
+
+    <ImageView
+        android:id="@+id/reportsImageView"
+        android:layout_width="57dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/icon_description"
+        app:layout_constraintBottom_toBottomOf="@+id/ProfitCalcButton"
+        app:layout_constraintEnd_toEndOf="@+id/reportButton"
+        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintStart_toStartOf="@+id/reportButton"
+        app:layout_constraintTop_toTopOf="@+id/reportButton"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/report" />
+
+    <ImageView
+        android:id="@+id/profitCalcImageView"
+        android:layout_width="62dp"
+        android:layout_height="71dp"
+        android:layout_marginBottom="1dp"
+        android:contentDescription="@string/icon_description"
+        app:layout_constraintBottom_toBottomOf="@+id/discountButton"
+        app:layout_constraintEnd_toEndOf="@+id/discountButton"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="@+id/discountButton"
+        app:layout_constraintTop_toTopOf="@+id/discountButton"
+        app:layout_constraintVertical_bias="0.464"
+        app:srcCompat="@drawable/calculate" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
