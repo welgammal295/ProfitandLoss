@@ -21,7 +21,7 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-/** Get instance of database */
+    /** Get instance of database */
 
     private ProfitLossRepository repository;
     private static final String MAIN_MENU_ACTIVITY_YEAR = "com.welgammal.walid.profitandloss.MAIN_MENU_ACTIVITY_YEAR" ;
@@ -65,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-                binding.netIncomeButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        insertElementRecord();
-                        updateDisplay();
-                    }
-                });
+        binding.netIncomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertElementRecord();
+                updateDisplay();
+            }
+        });
 
         userTaxRate = getIntent().getDoubleExtra("userTaxRate",8.85);
     }
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     /** Insert records in database */
     private void insertElementRecord(){
         Elements element = new Elements(mRevenue, mCostOfSale, mOperatingExpenses,
-        mOtherExpenses, mOtherIncomes, MainMenu.year, MainMenu.month, MainMenu.loggedInUserId);
+                mOtherExpenses, mOtherIncomes, MainMenu.year, MainMenu.month, MainMenu.loggedInUserId);
         repository.insertElements(element);
 
     }
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         binding.netIncomesOutputTextView.setText(netDisplay);
         Log.i(TAG, repository.getAllLogs().toString());
     }
-        /* TODO: How to get the year, month, taxrate */
+    /* TODO: How to get the year, month, taxrate */
     private double calculateNetIncome(){
 
         calculateGrossProfit();

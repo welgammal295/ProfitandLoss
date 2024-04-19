@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/money_editTextDollarAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter dollar amount"
+        android:inputType="numberDecimal"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/money_editTextDollarAmount"
+        android:text="Converted Amounts"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/money_editTextUSD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/money_editTextDollarAmount"
+        android:layout_marginTop="45dp"
+        android:hint="American Dollar (USD)" />
+
+    <EditText
+        android:id="@+id/money_editTextMXN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mexican Peso (MXN)"
+        android:layout_below="@id/money_editTextUSD"/>
+
+    <EditText
+        android:id="@+id/money_editTextEUR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Euro (EUR)"
+        android:layout_below="@id/money_editTextMXN"/>
+
+    <EditText
+        android:id="@+id/money_editTextJPY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Japanese Yen (JPY)"
+        android:layout_below="@id/money_editTextEUR"/>
+
+    <EditText
+        android:id="@+id/money_editTextKRW"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Korean Won (KRW)"
+        android:layout_below="@id/money_editTextJPY"/>
+
+    <EditText
+        android:id="@+id/money_editTextCAD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Canadian Dollar (CAD)"
+        android:layout_below="@id/money_editTextKRW"/>
+
+    <EditText
+        android:id="@+id/money_editTextGBP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="British Pound (GBP)"
+        android:layout_below="@id/money_editTextCAD"/>
+
+    <EditText
+        android:id="@+id/money_editTextAUD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Australian Dollar (AUD)"
+        android:layout_below="@id/money_editTextGBP"/>
+
+    <EditText
+        android:id="@+id/money_editTextCNY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Chinese Yuan (CNY)"
+        android:layout_below="@id/money_editTextAUD"/>
+
+    <EditText
+        android:id="@+id/money_editTextCHF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Swiss Franc (CHF)"
+        android:layout_below="@id/money_editTextCNY"/>
+
+    <EditText
+        android:id="@+id/money_editTextHKD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Hong Kong Dollar (HKD)"
+        android:layout_below="@id/money_editTextCHF"/>
+
+    <EditText
+        android:id="@+id/money_editTextINR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Indian Rupee (INR)"
+        android:layout_below="@id/money_editTextHKD"/>
+
+
+</RelativeLayout>
