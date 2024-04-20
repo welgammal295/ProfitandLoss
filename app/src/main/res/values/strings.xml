@@ -55,5 +55,18 @@
     <string-array name="monthsList">
         <item>January</item>
     </string-array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main">Main</string>
+    <string name="welcome_discount">Welcome to the product discount calculator</string>
+    <string name="price">Price of Product</string>
+    <string name="enter_product_price">Enter Unit Price</string>
+    <string name="priceOfProduct">Price of Product</string>
+    <string name="discountValue">Discount Percentage</string>
+    <string name="enter_discount_percentage">Enter Discount (%)</string>
+    <string name="discount_calc">Calculate Discount</string>
+    <string name="enter_units_sold">Count of Units Sold</string>
+    <string name="units_count">Units Count</string>
+    <string name="total_discount">Total Discount</string>
+    <string name="full_price">Without Discount</string>
 
 </resources>

@@ -7,4 +7,183 @@
     android:layout_height="match_parent"
     tools:context=".DiscountActivity">
 
+
+
+    <TextView
+        android:id="@+id/discountDisplayTextView"
+        android:layout_width="383dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dip"
+        android:padding="8dp"
+        android:text="@string/welcome_discount"
+        android:textColor="@color/blue"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/priceLabelTextView"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dip"
+        android:text="@string/price"
+        android:textColor="@color/light_orange"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/discountDisplayTextView" />
+
+    <EditText
+        android:id="@+id/priceInputEditText"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:autofillHints=""
+        android:hint="@string/enter_product_price"
+        android:inputType="numberDecimal"
+        android:padding="10dp"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:textSize="13sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/priceLabelTextView"
+        app:layout_constraintStart_toEndOf="@id/priceLabelTextView" />
+
+    <TextView
+        android:id="@+id/discountValueLabelTextView"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dip"
+        android:text="@string/discountValue"
+        android:textColor="@color/light_orange"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priceLabelTextView" />
+
+
+    <EditText
+        android:id="@+id/discountValueInputEditText"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="20dp"
+        android:autofillHints=""
+        android:hint="@string/enter_discount_percentage"
+        android:inputType="numberDecimal"
+        android:padding="10dp"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/discountValueLabelTextView"
+        app:layout_constraintStart_toEndOf="@id/discountValueLabelTextView" />
+
+    <TextView
+        android:id="@+id/unitsCountLabelTextView"
+        android:layout_width="213dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dip"
+        android:text="@string/units_count"
+        android:textColor="@color/light_orange"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/discountValueLabelTextView" />
+
+    <EditText
+        android:id="@+id/unitsCountInputEditText"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:hint="@string/enter_units_sold"
+        android:textSize="14sp"
+        android:textColor="@color/material_dynamic_neutral90"
+        android:inputType="numberDecimal"
+        android:padding="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/unitsCountLabelTextView"
+        app:layout_constraintStart_toEndOf="@id/unitsCountLabelTextView"
+        android:autofillHints="" />
+
+
+    <TextView
+        android:id="@+id/fullPriceLabelTextView"
+        android:layout_width="213dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dip"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:text="@string/full_price"
+        android:textColor="@color/blue"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/unitsCountLabelTextView" />
+
+    <TextView
+        android:id="@+id/fullPriceOutputTextView"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:textSize="22sp"
+        tools:text="$0.00"
+        android:textColor="@color/cardview_light_background"
+        android:padding="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/fullPriceLabelTextView"
+        app:layout_constraintStart_toEndOf="@id/fullPriceLabelTextView"
+        />
+
+    <TextView
+        android:id="@+id/discountCalcLabelTextView"
+        android:layout_width="213dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dip"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:text="@string/total_discount"
+        android:textColor="@color/blue"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fullPriceLabelTextView" />
+
+    <TextView
+        android:id="@+id/discountCalcOutputTextView"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dip"
+        android:layout_marginStart="8dp"
+        android:textSize="22sp"
+        tools:text="$0.00"
+        android:textColor="@color/cardview_light_background"
+        android:padding="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/discountCalcLabelTextView"
+        app:layout_constraintStart_toEndOf="@id/fullPriceLabelTextView"
+        />
+
+    <Button
+        android:id="@+id/discountCalcButton"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="@color/light_orange"
+        android:gravity="center"
+        android:onClick="discount"
+        android:shadowColor="@color/material_dynamic_secondary90"
+        android:text="@string/discount_calc"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/discountCalcLabelTextView" />
+
+    <Button
+        android:id="@+id/mainMenuButton"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:shadowColor="@color/material_dynamic_secondary90"
+        android:text="@string/main_menu"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:backgroundTint="@color/light_orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/discountCalcButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

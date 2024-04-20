@@ -2,11 +2,6 @@ package com.welgammal.walid.profitandloss;
 
 import static com.welgammal.walid.profitandloss.MainActivity.TAG;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -23,7 +18,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 
 import com.welgammal.walid.profitandloss.Calc.ExchangeActivity;
 import com.welgammal.walid.profitandloss.database.ProfitLossRepository;
@@ -225,7 +224,7 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
         } else if (v.getId() == R.id.exchangeButton) {
             intent = new Intent(this, ExchangeActivity.class);
         } else if (v.getId() == R.id.discountButton) {
-            intent = new Intent(this, ExchangeActivity.class); // Assuming DiscountActivity is the correct activity
+            intent = new Intent(this, DiscountActivity.class); // Assuming DiscountActivity is the correct activity
         } else {
             return;
         }
