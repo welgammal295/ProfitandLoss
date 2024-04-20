@@ -45,6 +45,7 @@
     <string name="icon_description">Icon</string>
     <string name="loan_button_text">Loan\nCalculator</string>
     <string name="discount_button_text">Discount\nCalculator</string>
+    <string name="add_contact">Add Contact</string>
     <string-array name="yearsList">
         <item>2024</item>
         <item>2025</item>

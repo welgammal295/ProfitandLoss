@@ -221,11 +221,11 @@ public class MainMenu extends AppCompatActivity implements View.OnClickListener 
         if (v.getId() == R.id.loanButton) {
             intent = new Intent(this, LoanActivity.class);
         } else if (v.getId() == R.id.reportButton) {
-            intent = new Intent(this, ReportActivity.class);
+            intent = new Intent(this, ContactActivity.class);
         } else if (v.getId() == R.id.exchangeButton) {
             intent = new Intent(this, ExchangeActivity.class);
         } else if (v.getId() == R.id.discountButton) {
-            intent = new Intent(this, ExchangeActivity.class); // Assuming DiscountActivity is the correct activity
+            intent = new Intent(this, DiscountActivity.class); // Assuming DiscountActivity is the correct activity
         } else {
             return;
         }
