@@ -273,17 +273,15 @@
 
     <ImageView
         android:id="@+id/reportsImageView"
-        android:layout_width="57dp"
-        android:layout_height="66dp"
+        android:layout_width="64dp"
+        android:layout_height="76dp"
         android:layout_marginTop="4dp"
         android:contentDescription="@string/icon_description"
-        app:layout_constraintBottom_toBottomOf="@+id/ProfitCalcButton"
         app:layout_constraintEnd_toEndOf="@+id/reportButton"
-        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/reportButton"
         app:layout_constraintTop_toTopOf="@+id/reportButton"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/report" />
+        app:srcCompat="@drawable/contacts" />
 
     <ImageView
         android:id="@+id/profitCalcImageView"
