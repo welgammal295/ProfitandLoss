@@ -26,12 +26,12 @@ import java.text.DecimalFormat;
 public class LoanActivity extends AppCompatActivity {
 
     private Spinner spinnerLoanType;
-    private EditText editTextLoanAmount, editTextDownPayment, editTextNumberOfPayments, editTextInterestRate;
-    private TextView textViewDownPayment, textViewMonthlyPayment;
+    public EditText editTextLoanAmount, editTextDownPayment, editTextNumberOfPayments, editTextInterestRate;
+    public TextView textViewDownPayment, textViewMonthlyPayment;
     private Button buttonCalculate;
 
-    private double defaultInterestRate;
-    private int defaultNumberOfPayments;
+    public double defaultInterestRate;
+    public int defaultNumberOfPayments;
     private boolean loanTypeSelected = false;
     private DecimalFormat decimalFormat = new DecimalFormat("#,###.##");
 
@@ -80,7 +80,7 @@ public class LoanActivity extends AppCompatActivity {
         });
     }
 
-    private void calculateMonthlyPayment() {
+    public void calculateMonthlyPayment() {
         double loanAmount = parseDouble(editTextLoanAmount.getText().toString());
         double downPayment = parseDouble(editTextDownPayment.getText().toString());
         int numberOfPayments = parseInt(editTextNumberOfPayments.getText().toString());
@@ -114,7 +114,7 @@ public class LoanActivity extends AppCompatActivity {
         textViewDownPayment.setVisibility(View.GONE);
     }
 
-    private void showDownPaymentFields() {
+    public void showDownPaymentFields() {
         editTextDownPayment.setVisibility(View.VISIBLE);
         textViewDownPayment.setVisibility(View.VISIBLE);
     }
