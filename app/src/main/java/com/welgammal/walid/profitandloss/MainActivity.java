@@ -1,14 +1,12 @@
 package com.welgammal.walid.profitandloss;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
-import android.content.LocusId;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.welgammal.walid.profitandloss.Calc.Calculations;
 import com.welgammal.walid.profitandloss.database.ProfitLossRepository;
@@ -16,7 +14,6 @@ import com.welgammal.walid.profitandloss.database.entities.Elements;
 import com.welgammal.walid.profitandloss.databinding.ActivityMainBinding;
 
 import java.util.Locale;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -102,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
         binding.netIncomesOutputTextView.setText(netDisplay);
         Log.i(TAG, repository.getAllLogs().toString());
     }
-    /* TODO: How to get the year, month, taxrate */
     private double calculateNetIncome(){
 
         calculateGrossProfit();

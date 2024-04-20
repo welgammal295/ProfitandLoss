@@ -8,7 +8,6 @@
     tools:context=".DiscountActivity">
 
 
-
     <TextView
         android:id="@+id/discountDisplayTextView"
         android:layout_width="383dp"
