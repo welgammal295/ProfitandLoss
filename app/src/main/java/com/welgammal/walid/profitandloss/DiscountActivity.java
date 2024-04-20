@@ -67,8 +67,10 @@ public class DiscountActivity extends AppCompatActivity {
             String disDisplay = String.format(Locale.US, "%s$%.2f", fullPrice < 0 ? "-" : "+", Math.abs(fullPrice));
             String fullPriceDisplay = String.format(Locale.US, "%s$%.2f", totalDiscount < 0 ? "-" : "+", Math.abs(totalDiscount));
 
-            binding.fullPriceOutputTextView.setText(fullPriceDisplay);
-            binding.discountCalcOutputTextView.setText(disDisplay);
+            binding.fullPriceOutputTextView.setText(disDisplay);
+            binding.discountCalcOutputTextView.setText(fullPriceDisplay);
+
+
 
     }
 
