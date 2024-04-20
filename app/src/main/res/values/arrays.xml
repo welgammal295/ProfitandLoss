@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="loan_types">
+        <item>Mortgage</item>
+        <item>Personal</item>
+        <item>Automobile</item>
+        <item>School</item>
+    </string-array>
+</resources>
